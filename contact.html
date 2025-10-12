@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Legacy Builders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Legacy<span>Builders</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="hero" style="height: 60vh; min-height: 500px;">
+        <div class="hero-content">
+            <h1>Contact Us</h1>
+            <p>Let's start a conversation about bringing your architectural vision to life.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>We're here to answer your questions and discuss your project needs.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Our Location</h3>
+                            <p>123 Premium Avenue, Luxury District<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone Number</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email Address</h3>
+                            <p>info@legacybuilders.com</p>
+                            <p>We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                            <p>Saturday: 9:00 AM - 2:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Project Type</option>
+                                <option value="residential">Residential Construction</option>
+                                <option value="commercial">Commercial Construction</option>
+                                <option value="renovation">Renovation</option>
+                                <option value="design">Architectural Design</option>
+                                <option value="consultation">Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="" disabled selected>Project Timeline</option>
+                                <option value="immediate">Immediate (0-3 months)</option>
+                                <option value="short">Short Term (3-6 months)</option>
+                                <option value="medium">Medium Term (6-12 months)</option>
+                                <option value="long">Long Term (12+ months)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="services section-padding" style="background-color: var(--light-gray); padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visit Our Office</h2>
+                <p>Schedule an appointment to visit our headquarters and discuss your project in person.</p>
+            </div>
+            <div style="height: 400px; background-color: var(--stone-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px;">
+                <div style="text-align: center;">
+                    <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3>Legacy Builders Headquarters</h3>
+                    <p>123 Premium Avenue, Luxury District, New York, NY 10001</p>
+                    <p style="margin-top: 20px;">
+                        <a href="#" class="btn btn-outline" style="margin-right: 10px;">Get Directions</a>
+                        <a href="#" class="btn">Schedule Visit</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="about section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about working with Legacy Builders.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h3>How long does a typical construction project take?</h3>
+                        <p>Project timelines vary based on scope, complexity, and size. A custom luxury home typically takes 12-18 months from design to completion, while commercial projects can range from 18-36 months. We provide detailed timelines during the planning phase.</p>
+                    </div>
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h3>Do you work with client architects or require in-house design?</h3>
+                        <p>We're flexible! We have an exceptional in-house architectural team, but we also frequently collaborate with client-selected architects. Our goal is to ensure the best outcome for your project, regardless of the design source.</p>
+                    </div>
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h3>What is your approach to budgeting and cost management?</h3>
+                        <p>We believe in transparency and detailed budgeting from the outset. We provide comprehensive cost estimates and maintain open communication about any changes. Our track record includes 100% of projects completed within budget.</p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h3>Do you handle permits and regulatory approvals?</h3>
+                        <p>Yes, we manage the entire permitting process, including applications, submissions, and coordination with local authorities. Our team has extensive experience navigating complex regulatory environments.</p>
+                    </div>
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h3>What regions do you serve?</h3>
+                        <p>While headquartered in New York, we undertake projects nationwide and internationally. We've completed luxury residences and commercial developments across the United States, Europe, and the Middle East.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do you ensure quality throughout the construction process?</h3>
+                        <p>Quality is embedded in our process through rigorous material selection, skilled craftsmanship, continuous inspections, and detailed project management. We also provide regular updates and site walkthroughs so you can see the quality firsthand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Legacy Builders</h3>
+                    <p>Creating exceptional spaces that stand the test of time with unparalleled craftsmanship and attention to detail.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Luxury Homes</a></li>
+                        <li><a href="services.html">Commercial Projects</a></li>
+                        <li><a href="services.html">Elite Renovations</a></li>
+                        <li><a href="services.html">Architectural Design</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and project insights.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="form-control">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Legacy Builders. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
