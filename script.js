@@ -287,3 +287,66 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on resize (in case layout changes)
     window.addEventListener('resize', checkPortfolioItems);
 });
+// Testimonials Animation Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Scroll animation for testimonial cards and stats
+    function checkTestimonialItems() {
+        const testimonialCards = document.querySelectorAll('.testimonial-card, .stat-item');
+        
+        testimonialCards.forEach(item => {
+            if (isElementInViewport(item)) {
+                item.classList.add('animate');
+            }
+        });
+    }
+    
+    // Check if element is in viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Counter animation for stats
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        
+        counters.forEach(counter => {
+            if (isElementInViewport(counter) && !counter.classList.contains('animated')) {
+                counter.classList.add('animated');
+                
+                const target = +counter.getAttribute('data-count');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            }
+        });
+    }
+    
+    // Initial check on page load
+    checkTestimonialItems();
+    animateCounters();
+    
+    // Check on scroll
+    window.addEventListener('scroll', function() {
+        checkTestimonialItems();
+        animateCounters();
+    });
+    
+    // Check on resize (in case layout changes)
+    window.addEventListener('resize', checkTestimonialItems);
+});
