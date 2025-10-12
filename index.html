@@ -4,52 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier Contractors FL | Premium Painting & Pressure Washing Services</title>
+    <meta name="description" content="Professional painting, pressure washing, and epoxy services in Tampa Bay. Flawless walls, lasting impressions with clean, reliable, and affordable solutions.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a4b8c;
-            --secondary: #f9b234;
-            --accent: #e63946;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --transition: all 0.3s ease;
-        }
-
-        /* ... (Keep all your existing CSS variables and styles here) ... */
-
-        /* Logo Styling */
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--dark);
-        }
-
-        .logo-img {
-            height: 50px;
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        /* For mobile responsiveness */
-        @media (max-width: 768px) {
-            .logo-img {
-                height: 40px;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -66,7 +24,7 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="nav-cta">Get Estimate</a></li>
                 </ul>
                 <button class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -78,28 +36,17 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Fresh Look, Flawless Finish!</h1>
-            <p>Professional painting, pressure washing, and epoxy services that transform your home or business.</p>
+            <h1>Flawless Walls, Lasting Impressions</h1>
+            <p>Professional painting, pressure washing, and epoxy services transforming Tampa Bay homes & businesses. Clean. Reliable. Affordable.</p>
             <div class="hero-btns">
-                <a href="contact.html" class="btn">Get a Free Estimate</a>
-                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
+                <a href="contact.html" class="btn"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
+                <a href="tel:7273556223" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now: (727) 355-6223</a>
             </div>
-        </div>
-    </section>
-
-    <!-- About Preview Section -->
-    <section class="about section-padding" id="about-preview">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Premier Contractors FL</h2>
-                    <p>🎨 Painting Pro specializing in both residential and commercial properties across Tampa Bay and surrounding areas. With expertise in interior and exterior painting, soft washing, pressure washing, and garage epoxy, we deliver clean, reliable, and affordable results.</p>
-                    <p>We approach each project with meticulous attention to detail, ensuring every surface reflects our commitment to quality craftsmanship and customer satisfaction.</p>
-                    <a href="about.html" class="btn">Learn More About Us</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Professional painting services">
-                </div>
+            <div class="hero-badges">
+                <div class="badge">Residential & Commercial</div>
+                <div class="badge">Interior & Exterior</div>
+                <div class="badge">Pressure & Soft Washing</div>
+                <div class="badge">Garage Epoxy Flooring</div>
             </div>
         </div>
     </section>
@@ -109,42 +56,148 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Professional Services</h2>
-                <p>Comprehensive solutions for residential and commercial properties</p>
+                <p>Comprehensive solutions for residential and commercial properties across Tampa Bay</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Professional Painting">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
                     </div>
                     <div class="service-content">
-                        <h3>🎨 Painting Services</h3>
-                        <p>Interior and exterior painting for homes and businesses. Flawless finishes that enhance curb appeal and transform living spaces.</p>
-                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                        <h3>🎨 Professional Painting</h3>
+                        <p>Interior & exterior painting for homes and businesses. Flawless finishes that enhance curb appeal and transform living spaces.</p>
+                        <ul class="service-features">
+                            <li>Walls, Ceilings & Trim</li>
+                            <li>Deck & Fence Staining</li>
+                            <li>New Construction & Repaints</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-outline">Explore Painting</a>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pressure Washing">
+                    <div class="service-icon">
+                        <i class="fas fa-spray-can"></i>
                     </div>
                     <div class="service-content">
                         <h3>🚿 Pressure & Soft Washing</h3>
                         <p>Professional roof, driveway, and exterior cleaning that removes dirt, algae, and stains while restoring your property's natural beauty.</p>
-                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                        <ul class="service-features">
+                            <li>Sidewalks & Driveways</li>
+                            <li>Patios & Pool Decks</li>
+                            <li>Residential & Commercial</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-outline">Explore Washing</a>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Garage Epoxy">
+                    <div class="service-icon">
+                        <i class="fas fa-layer-group"></i>
                     </div>
                     <div class="service-content">
                         <h3>💎 Garage Epoxy Flooring</h3>
                         <p>Durable, stunning epoxy floors that transform your garage into a showpiece. Sleek surfaces that withstand heavy use while enhancing your space.</p>
-                        <a href="services.html" class="btn btn-outline">Learn More</a>
+                        <ul class="service-features">
+                            <li>Durable & Long-lasting</li>
+                            <li>Easy to Clean & Maintain</li>
+                            <li>Beautiful Showroom Finish</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-outline">Explore Epoxy</a>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
+            <div class="services-cta">
                 <a href="services.html" class="btn">View All Services</a>
+                <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about section-padding" id="about-preview">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose Premier Contractors FL?</h2>
+                    <div class="usp-grid">
+                        <div class="usp-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Clean & Reliable</h3>
+                            <p>We deliver exceptional results with attention to detail and respect for your property.</p>
+                        </div>
+                        <div class="usp-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3>Affordable Excellence</h3>
+                            <p>Premium services at competitive prices without compromising on quality.</p>
+                        </div>
+                        <div class="usp-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>Timely Completion</h3>
+                            <p>We respect your time and complete projects efficiently while maintaining quality.</p>
+                        </div>
+                        <div class="usp-item">
+                            <i class="fas fa-thumbs-up"></i>
+                            <h3>Satisfaction Guaranteed</h3>
+                            <p>Your complete satisfaction is our priority from start to finish.</p>
+                        </div>
+                    </div>
+                    <div class="about-cta">
+                        <a href="about.html" class="btn">Our Story</a>
+                        <a href="testimonials.html" class="btn btn-outline">Happy Clients</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1558&q=80" alt="Professional painting services in Tampa Bay">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas Section -->
+    <section class="areas section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Serving Tampa Bay & Surrounding Areas</h2>
+                <p>Proudly providing premium contracting services throughout the region</p>
+            </div>
+            <div class="areas-content">
+                <div class="areas-map">
+                    <!-- Placeholder for map or area graphic -->
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Tampa Bay Service Area</p>
+                    </div>
+                </div>
+                <div class="areas-list">
+                    <h3>We Serve:</h3>
+                    <div class="cities-grid">
+                        <div class="city">Tampa</div>
+                        <div class="city">St. Petersburg</div>
+                        <div class="city">Clearwater</div>
+                        <div class="city">Brandon</div>
+                        <div class="city">Riverview</div>
+                        <div class="city">Lakeland</div>
+                        <div class="city">Sarasota</div>
+                        <div class="city">And surrounding areas!</div>
+                    </div>
+                    <div class="areas-cta">
+                        <p>Not sure if we service your area?</p>
+                        <a href="contact.html" class="btn">Contact Us Today</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>Ready to Transform Your Property?</h2>
+                <p>Get your free estimate today and experience the Premier difference</p>
+                <div class="banner-btns">
+                    <a href="contact.html" class="btn btn-large"><i class="fas fa-estate"></i> Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline btn-large"><i class="fas fa-phone"></i> Call: (727) 355-6223</a>
+                </div>
             </div>
         </div>
     </section>
@@ -164,7 +217,7 @@
                         </div>
                         <div>
                             <h3>Call or Text Us</h3>
-                            <p>(727) 355-6223</p>
+                            <p><a href="tel:7273556223">(727) 355-6223</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -173,7 +226,7 @@
                         </div>
                         <div>
                             <h3>Email Address</h3>
-                            <p>support@premiercontractorsfl.com</p>
+                            <p><a href="mailto:support@premiercontractorsfl.com">support@premiercontractorsfl.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -183,6 +236,15 @@
                         <div>
                             <h3>Service Area</h3>
                             <p>Tampa Bay & Surrounding Areas</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Business Hours</h3>
+                            <p>Mon-Sat: 8:00 AM - 6:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -200,16 +262,19 @@
                         <div class="form-group">
                             <select class="form-control" required>
                                 <option value="">Select Service</option>
-                                <option value="painting">Painting</option>
+                                <option value="interior-painting">Interior Painting</option>
+                                <option value="exterior-painting">Exterior Painting</option>
                                 <option value="pressure-washing">Pressure Washing</option>
                                 <option value="soft-washing">Soft Washing</option>
                                 <option value="epoxy">Garage Epoxy</option>
+                                <option value="deck-staining">Deck & Fence Staining</option>
+                                <option value="new-construction">New Construction</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" placeholder="Tell us about your project..." rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn btn-block"><i class="fas fa-paper-plane"></i> Send Message</button>
                     </form>
                 </div>
             </div>
@@ -222,10 +287,11 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h3>Premier Contractors FL</h3>
-                    <p>Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
+                    <p>Flawless Walls, Lasting Impressions. Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -235,6 +301,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -246,19 +313,23 @@
                         <li><a href="services.html">Pressure Washing</a></li>
                         <li><a href="services.html">Soft Washing</a></li>
                         <li><a href="services.html">Garage Epoxy</a></li>
+                        <li><a href="services.html">Deck & Fence Staining</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Service Areas</h3>
-                    <p>Serving Tampa Bay and surrounding areas with professional contracting services.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email" class="form-control">
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> <a href="tel:7273556223">(727) 355-6223</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:support@premiercontractorsfl.com">support@premiercontractorsfl.com</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Tampa Bay & Surrounding Areas</p>
+                    </div>
+                    <div class="footer-cta">
+                        <a href="contact.html" class="btn btn-small">Get Free Estimate</a>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
