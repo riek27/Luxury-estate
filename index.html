@@ -5,744 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legacy Builders | Premium Construction & Architecture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* CSS Variables for consistent theming */
-        :root {
-            --primary-black: #1a1a1a;
-            --secondary-black: #2d2d2d;
-            --white: #ffffff;
-            --stone-gray: #e8e8e8;
-            --light-gray: #f5f5f5;
-            --gold: #d4af37;
-            --light-gold: #f4e4a6;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--secondary-black);
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-black);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background-color: var(--gold);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--gold);
-            color: var(--primary-black);
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background-color: var(--light-gold);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--gold);
-            color: var(--primary-black);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            box-shadow: var(--shadow);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--gold);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--light-gray);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            margin-bottom: 20px;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .stat-text {
-            font-size: 1rem;
-            color: var(--secondary-black);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-
-        .service-content {
-            padding: 25px;
-        }
-
-        .service-content h3 {
-            margin-bottom: 15px;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background-color: var(--light-gray);
-        }
-
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            margin: 0 5px 10px;
-            background: transparent;
-            border: 1px solid var(--secondary-black);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--gold);
-            border-color: var(--gold);
-            color: var(--primary-black);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .portfolio-img {
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-img img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: var(--white);
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-
-        /* Testimonials Section */
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial {
-            padding: 40px;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .client-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-        }
-
-        .client-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .client-rating {
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .client-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .client-name {
-            font-weight: 600;
-            color: var(--primary-black);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--light-gray);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-black);
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--stone-gray);
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--gold);
-            outline: none;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-black);
-            color: var(--white);
-            padding: 80px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-col h3 {
-            color: var(--white);
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--gold);
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--stone-gray);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary-black);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--gold);
-            color: var(--primary-black);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: var(--stone-gray);
-        }
-
-        /* Dark Mode */
-        body.dark-mode {
-            background-color: var(--primary-black);
-            color: var(--stone-gray);
-        }
-
-        body.dark-mode h1, 
-        body.dark-mode h2, 
-        body.dark-mode h3, 
-        body.dark-mode h4, 
-        body.dark-mode h5, 
-        body.dark-mode h6 {
-            color: var(--white);
-        }
-
-        body.dark-mode .service-card,
-        body.dark-mode .testimonial,
-        body.dark-mode .contact-form {
-            background-color: var(--secondary-black);
-        }
-
-        body.dark-mode .about,
-        body.dark-mode .portfolio,
-        body.dark-mode .contact {
-            background-color: var(--secondary-black);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2.2rem;
-            }
-            
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 0;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--primary-black);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 50px;
-                transition: var(--transition);
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 0 0 30px 0;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section-padding {
-                padding: 60px 0;
-            }
-            
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Legacy<span>Builders</span></a>
+                <a href="index.html" class="logo">Legacy<span>Builders</span></a>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <button class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -757,34 +35,21 @@
             <h1>We Build More Than Structures — We Build Legacies</h1>
             <p>Creating exceptional spaces that stand the test of time with unparalleled craftsmanship and attention to detail.</p>
             <div class="hero-btns">
-                <a href="#contact" class="btn">Start Your Project</a>
-                <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+                <a href="contact.html" class="btn">Start Your Project</a>
+                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about section-padding" id="about">
+    <!-- About Preview Section -->
+    <section class="about section-padding" id="about-preview">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2>Our Legacy of Excellence</h2>
                     <p>For over three decades, Legacy Builders has been at the forefront of luxury construction, transforming visions into architectural masterpieces. Our commitment to quality, innovation, and client satisfaction has established us as the premier choice for discerning clients worldwide.</p>
                     <p>We approach each project with a unique blend of traditional craftsmanship and cutting-edge technology, ensuring every detail reflects our unwavering standards of excellence.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number" data-count="30">0</div>
-                            <div class="stat-text">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number" data-count="450">0</div>
-                            <div class="stat-text">Projects Completed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number" data-count="95">0</div>
-                            <div class="stat-text">Client Satisfaction</div>
-                        </div>
-                    </div>
+                    <a href="about.html" class="btn">Learn More About Us</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Modern architecture">
@@ -793,8 +58,8 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services section-padding" id="services">
+    <!-- Services Preview Section -->
+    <section class="services section-padding" id="services-preview">
         <div class="container">
             <div class="section-title">
                 <h2>Our Premium Services</h2>
@@ -808,7 +73,7 @@
                     <div class="service-content">
                         <h3>Luxury Homes</h3>
                         <p>Custom-designed residences that blend architectural excellence with personalized luxury, creating spaces that reflect your unique lifestyle.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -818,7 +83,7 @@
                     <div class="service-content">
                         <h3>Commercial Projects</h3>
                         <p>Prestigious commercial spaces that combine functionality with aesthetic appeal, designed to enhance business operations and brand identity.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -828,25 +93,22 @@
                     <div class="service-content">
                         <h3>Elite Renovations</h3>
                         <p>Transforming existing spaces into exceptional environments through meticulous planning, premium materials, and expert craftsmanship.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <a href="services.html" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="services.html" class="btn">View All Services</a>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio section-padding" id="portfolio">
+    <!-- Portfolio Preview Section -->
+    <section class="portfolio section-padding" id="portfolio-preview">
         <div class="container">
             <div class="section-title">
-                <h2>Our Portfolio</h2>
+                <h2>Featured Projects</h2>
                 <p>Explore our collection of exceptional projects that showcase our commitment to quality and innovation.</p>
-            </div>
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="residential">Residential</button>
-                <button class="filter-btn" data-filter="commercial">Commercial</button>
-                <button class="filter-btn" data-filter="renovation">Renovations</button>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-category="residential">
@@ -877,11 +139,14 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="portfolio.html" class="btn">View Full Portfolio</a>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section-padding" id="testimonials">
+    <!-- Testimonials Preview Section -->
+    <section class="testimonials section-padding" id="testimonials-preview">
         <div class="container">
             <div class="section-title">
                 <h2>Client Testimonials</h2>
@@ -903,11 +168,14 @@
                     <p class="client-name">Robert Johnson, CEO of InnovateTech</p>
                 </div>
             </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="testimonials.html" class="btn">Read More Testimonials</a>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact section-padding" id="contact">
+    <!-- Contact Preview Section -->
+    <section class="contact section-padding" id="contact-preview">
         <div class="container">
             <div class="section-title">
                 <h2>Let's Build Your Vision</h2>
@@ -981,21 +249,21 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Luxury Homes</a></li>
-                        <li><a href="#">Commercial Projects</a></li>
-                        <li><a href="#">Elite Renovations</a></li>
-                        <li><a href="#">Architectural Design</a></li>
-                        <li><a href="#">Project Management</a></li>
+                        <li><a href="services.html">Luxury Homes</a></li>
+                        <li><a href="services.html">Commercial Projects</a></li>
+                        <li><a href="services.html">Elite Renovations</a></li>
+                        <li><a href="services.html">Architectural Design</a></li>
+                        <li><a href="services.html">Project Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1018,134 +286,6 @@
         <i class="fas fa-moon"></i>
     </div>
 
-    <script>
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 100);
-        });
-
-        // Animated counters
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                const count = +counter.innerText;
-                const increment = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        };
-
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Dark/Light mode toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        });
-
-        // Form validation
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Simple validation
-            const inputs = contactForm.querySelectorAll('input, textarea');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = 'red';
-                } else {
-                    input.style.borderColor = '';
-                }
-            });
-            
-            if (isValid) {
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-
-        // Initialize counters when section is in view
-        const aboutSection = document.querySelector('.about');
-        
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        observer.observe(aboutSection);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
