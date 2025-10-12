@@ -226,3 +226,64 @@ const createFloatingBackgrounds = () => {
 document.addEventListener('DOMContentLoaded', () => {
     createFloatingBackgrounds();
 });
+// Portfolio Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Portfolio filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    // Re-trigger animation for newly shown items
+                    setTimeout(() => {
+                        if (isElementInViewport(item)) {
+                            item.classList.add('animate');
+                        }
+                    }, 100);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Scroll animation for portfolio items
+    function checkPortfolioItems() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item, .highlight-item');
+        
+        portfolioItems.forEach(item => {
+            if (isElementInViewport(item) && item.style.display !== 'none') {
+                item.classList.add('animate');
+            }
+        });
+    }
+    
+    // Check if element is in viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Initial check on page load
+    checkPortfolioItems();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkPortfolioItems);
+    
+    // Check on resize (in case layout changes)
+    window.addEventListener('resize', checkPortfolioItems);
+});
