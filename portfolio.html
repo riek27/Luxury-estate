@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Portfolio | Legacy Builders</title>
+    <title>Our Portfolio | Premier Contractors FL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -13,14 +13,17 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">Legacy<span>Builders</span></a>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Premier Contractors FL" class="logo-img">
+                    Premier<span>Contractors</span>
+                </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-small">Get Estimate</a></li>
                 </ul>
                 <button class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -30,85 +33,101 @@
     </header>
 
     <!-- Portfolio Hero Section -->
-    <section class="hero" style="height: 60vh; min-height: 500px;">
-        <div class="hero-content">
-            <h1>Our Portfolio</h1>
-            <p>A showcase of exceptional projects that demonstrate our commitment to quality and innovation.</p>
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Our Portfolio</h1>
+                <p>Showcasing our exceptional painting, pressure washing, and epoxy projects across Tampa Bay</p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now: (727) 355-6223</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section class="portfolio section-padding" id="portfolio">
+    <section class="portfolio section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Explore our collection of exceptional projects that showcase our commitment to quality and innovation.</p>
+                <h2>Our Recent Projects</h2>
+                <p>Explore our collection of exceptional work that showcases our commitment to quality and craftsmanship</p>
             </div>
+            
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="residential">Residential</button>
-                <button class="filter-btn" data-filter="commercial">Commercial</button>
-                <button class="filter-btn" data-filter="renovation">Renovations</button>
+                <button class="filter-btn" data-filter="painting">Painting</button>
+                <button class="filter-btn" data-filter="washing">Pressure Washing</button>
+                <button class="filter-btn" data-filter="epoxy">Epoxy Flooring</button>
             </div>
+            
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="residential">
+                <!-- Painting Projects -->
+                <div class="portfolio-item" data-category="painting">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern Villa">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Interior Painting Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>Seaside Villa</h3>
-                        <p>Malibu, California | Residential</p>
-                        <p>This breathtaking oceanfront property features floor-to-ceiling windows, sustainable materials, and seamless indoor-outdoor living spaces.</p>
+                        <h3>Modern Home Interior</h3>
+                        <p>Tampa, FL | Interior Painting</p>
+                        <p>Complete interior transformation with premium Sherwin-Williams paints in a modern color palette.</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="commercial">
+                
+                <div class="portfolio-item" data-category="painting">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Corporate Headquarters">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="Exterior Painting Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>TechCorp Headquarters</h3>
-                        <p>San Francisco, California | Commercial</p>
-                        <p>A state-of-the-art corporate campus designed to foster collaboration and innovation, featuring green roofs and advanced sustainability systems.</p>
+                        <h3>Historic Home Exterior</h3>
+                        <p>St. Petersburg, FL | Exterior Painting</p>
+                        <p>Complete exterior repaint preserving the historic character while providing modern protection.</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="renovation">
+                
+                <!-- Pressure Washing Projects -->
+                <div class="portfolio-item" data-category="washing">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Historic Renovation">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Pressure Washing Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>Heritage Mansion Restoration</h3>
-                        <p>Boston, Massachusetts | Renovation</p>
-                        <p>Preserving the historical integrity of this 19th-century mansion while introducing modern amenities and energy-efficient systems.</p>
+                        <h3>Driveway & Sidewalk Restoration</h3>
+                        <p>Clearwater, FL | Pressure Washing</p>
+                        <p>Removed years of built-up dirt, oil stains, and mildew from concrete surfaces.</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="residential">
+                
+                <div class="portfolio-item" data-category="washing">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mountain Retreat">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1973&q=80" alt="Roof Cleaning Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>Alpine Mountain Retreat</h3>
-                        <p>Aspen, Colorado | Residential</p>
-                        <p>A luxurious mountain home designed to withstand harsh weather conditions while providing warmth, comfort, and spectacular views.</p>
+                        <h3>Roof & House Soft Washing</h3>
+                        <p>Brandon, FL | Soft Washing</p>
+                        <p>Gentle but effective cleaning to remove black streaks and algae without damaging surfaces.</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="commercial">
+                
+                <!-- Epoxy Projects -->
+                <div class="portfolio-item" data-category="epoxy">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Boutique Hotel">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Epoxy Flooring Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>Azure Boutique Hotel</h3>
-                        <p>Miami, Florida | Commercial</p>
-                        <p>An intimate luxury hotel featuring custom-designed furnishings, a rooftop infinity pool, and bespoke guest experiences.</p>
+                        <h3>Garage Floor Transformation</h3>
+                        <p>Lakeland, FL | Epoxy Flooring</p>
+                        <p>Durable, high-gloss epoxy coating that resists chemicals, stains, and heavy impacts.</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="renovation">
+                
+                <div class="portfolio-item" data-category="epoxy">
                     <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Urban Loft">
+                        <img src="https://images.unsplash.com/photo-1621370468895-1e4ca4735c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Commercial Epoxy Project">
                     </div>
                     <div class="portfolio-overlay">
-                        <h3>Industrial Loft Conversion</h3>
-                        <p>New York, New York | Renovation</p>
-                        <p>Transforming a former warehouse into a spacious, light-filled residence that honors its industrial past while embracing contemporary living.</p>
+                        <h3>Commercial Showroom Floor</h3>
+                        <p>Tampa, FL | Commercial Epoxy</p>
+                        <p>Professional epoxy flooring for a car dealership showroom with custom color flakes.</p>
                     </div>
                 </div>
             </div>
@@ -116,45 +135,56 @@
     </section>
 
     <!-- Project Highlights Section -->
-    <section class="services section-padding" style="background-color: var(--light-gray);">
+    <section class="project-highlights section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Project Highlights</h2>
-                <p>Notable achievements and innovative solutions from our recent work.</p>
+                <p>Notable achievements and customer satisfaction from our recent work</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3>Sustainable Design Excellence</h3>
-                        <p>Our Malibu Seaside Villa project achieved LEED Platinum certification through innovative water reclamation systems, passive solar design, and locally sourced sustainable materials.</p>
-                        <div class="about-stats" style="grid-template-columns: 1fr; margin-top: 20px;">
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Complete Home Transformation</h3>
+                        <p>Full exterior painting and pressure washing project that increased curb appeal and property value by 15%.</p>
+                        <div class="highlight-stats">
                             <div class="stat">
-                                <div class="stat-number">75%</div>
-                                <div class="stat-text">Reduced Energy Consumption</div>
+                                <div class="stat-number">15%</div>
+                                <div class="stat-text">Value Increase</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3>Historic Preservation</h3>
-                        <p>The Heritage Mansion Restoration involved meticulous research and craftsmanship to preserve original features while integrating modern infrastructure and accessibility improvements.</p>
-                        <div class="about-stats" style="grid-template-columns: 1fr; margin-top: 20px;">
+                
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Commercial Property Refresh</h3>
+                        <p>Multi-story office building exterior painting completed ahead of schedule and under budget.</p>
+                        <div class="highlight-stats">
                             <div class="stat">
-                                <div class="stat-number">95%</div>
-                                <div class="stat-text">Original Features Preserved</div>
+                                <div class="stat-number">5 Days</div>
+                                <div class="stat-text">Ahead of Schedule</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3>Innovative Engineering</h3>
-                        <p>TechCorp Headquarters features a cantilevered design that creates dramatic overhangs while maintaining structural integrity, achieved through advanced engineering solutions.</p>
-                        <div class="about-stats" style="grid-template-columns: 1fr; margin-top: 20px;">
+                
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Award-Winning Restoration</h3>
+                        <p>Historic home restoration project that received local preservation awards for authenticity.</p>
+                        <div class="highlight-stats">
                             <div class="stat">
-                                <div class="stat-number">Award</div>
-                                <div class="stat-text">Engineering Excellence 2024</div>
+                                <div class="stat-number">2</div>
+                                <div class="stat-text">Awards Won</div>
                             </div>
                         </div>
                     </div>
@@ -164,13 +194,16 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="contact section-padding" style="text-align: center;">
+    <section class="cta-banner">
         <div class="container">
-            <div class="section-title">
-                <h2>Inspired by Our Work?</h2>
-                <p>Let's discuss how we can bring your vision to life with the same level of craftsmanship and attention to detail.</p>
+            <div class="cta-content">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Get your free, no-obligation estimate today and experience the Premier Contractors FL difference</p>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn btn-large">Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline btn-large">Call: (727) 355-6223</a>
+                </div>
             </div>
-            <a href="contact.html" class="btn" style="margin-top: 20px;">Start Your Project</a>
         </div>
     </section>
 
@@ -179,13 +212,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>Legacy Builders</h3>
-                    <p>Creating exceptional spaces that stand the test of time with unparalleled craftsmanship and attention to detail.</p>
+                    <h3>Premier Contractors FL</h3>
+                    <p>Flawless Walls, Lasting Impressions. Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:support@premiercontractorsfl.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -195,30 +227,35 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="services.html">Luxury Homes</a></li>
-                        <li><a href="services.html">Commercial Projects</a></li>
-                        <li><a href="services.html">Elite Renovations</a></li>
-                        <li><a href="services.html">Architectural Design</a></li>
-                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="services.html">Interior Painting</a></li>
+                        <li><a href="services.html">Exterior Painting</a></li>
+                        <li><a href="services.html">Pressure Washing</a></li>
+                        <li><a href="services.html">Soft Washing</a></li>
+                        <li><a href="services.html">Garage Epoxy</a></li>
+                        <li><a href="services.html">Deck Staining</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and project insights.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email" class="form-control">
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> <a href="tel:7273556223">(727) 355-6223</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:support@premiercontractorsfl.com">support@premiercontractorsfl.com</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Tampa Bay & Surrounding Areas</p>
+                    </div>
+                    <div class="footer-cta">
+                        <a href="contact.html" class="btn btn-small">Get Free Estimate</a>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Legacy Builders. All Rights Reserved.</p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
