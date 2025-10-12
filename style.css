@@ -206,10 +206,19 @@ header.scrolled {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--white);
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    transition: var(--transition);
 }
 
 .logo span {
@@ -784,6 +793,14 @@ body.dark-mode .contact {
         padding: 15px 0;
     }
     
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
     .nav-links {
         position: fixed;
         top: 70px;
@@ -837,11 +854,46 @@ body.dark-mode .contact {
         padding: 100px 0;
     }
     
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
     .about-stats {
         grid-template-columns: 1fr;
     }
     
     .footer-content {
         grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .logo-img {
+        height: 30px;
+        margin-right: 5px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-item {
+        min-width: 100%;
     }
 }
