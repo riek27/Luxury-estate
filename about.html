@@ -7,80 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Additional styles specific to about page */
-        .about-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-            margin: 10px;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .stat-text {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .service-icon {
-            text-align: center;
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        /* Ensure logo styling is consistent */
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--dark);
-        }
-
-        .logo-img {
-            height: 50px;
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .about-stats {
-                flex-direction: column;
-            }
-            
-            .stat {
-                margin: 15px 0;
-            }
-            
-            .logo-img {
-                height: 40px;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -93,11 +19,11 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-small">Get Estimate</a></li>
                 </ul>
                 <button class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -107,21 +33,28 @@
     </header>
 
     <!-- About Hero Section -->
-    <section class="hero" style="height: 60vh; min-height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80'); background-size: cover; background-position: center;">
-        <div class="hero-content">
-            <h1>Premier Contractors FL</h1>
-            <p>Clean, reliable, and affordable painting and pressure washing services for Tampa Bay.</p>
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>About Premier Contractors FL</h1>
+                <p>Clean, reliable, and affordable painting and pressure washing services for Tampa Bay.</p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now: (727) 355-6223</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about section-padding" id="about">
+    <section class="about section-padding">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2>Tampa Bay's Premier Painting & Pressure Washing Experts</h2>
                     <p>Premier Contractors FL has built a reputation for excellence in residential and commercial painting, pressure washing, soft washing, and garage epoxy services throughout the Tampa Bay area. We take pride in transforming properties with our attention to detail and commitment to quality craftsmanship.</p>
                     <p>Our team of skilled professionals understands that your home or business is one of your most valuable investments. That's why we approach every project with the care and precision it deserves, using high-quality materials and proven techniques to deliver results that exceed expectations.</p>
+                    
                     <div class="about-stats">
                         <div class="stat">
                             <div class="stat-number" data-count="100">0</div>
@@ -145,46 +78,61 @@
     </section>
 
     <!-- Values Section -->
-    <section class="services section-padding" style="background-color: var(--light);">
+    <section class="values section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose Premier Contractors FL</h2>
                 <p>Our commitment to excellence sets us apart from the competition.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
                         <i class="fas fa-brush"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Expert Craftsmanship</h3>
-                        <p>We take pride in our attention to detail and flawless finishes. From interior painting to exterior transformations, our work speaks for itself in quality and precision.</p>
-                    </div>
+                    <h3>Expert Craftsmanship</h3>
+                    <p>We take pride in our attention to detail and flawless finishes. From interior painting to exterior transformations, our work speaks for itself in quality and precision.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
+                <div class="value-item">
+                    <div class="value-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Clean & Reliable</h3>
-                        <p>We respect your property and time. Our team maintains clean worksites, shows up on schedule, and completes projects efficiently with minimal disruption to your routine.</p>
-                    </div>
+                    <h3>Clean & Reliable</h3>
+                    <p>We respect your property and time. Our team maintains clean worksites, shows up on schedule, and completes projects efficiently with minimal disruption to your routine.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
+                <div class="value-item">
+                    <div class="value-icon">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Affordable Excellence</h3>
-                        <p>Premium results don't have to come with premium prices. We offer competitive pricing without compromising on the quality of materials or workmanship.</p>
+                    <h3>Affordable Excellence</h3>
+                    <p>Premium results don't have to come with premium prices. We offer competitive pricing without compromising on the quality of materials or workmanship.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
+                    <h3>Timely Completion</h3>
+                    <p>We understand the importance of deadlines. Our efficient workflow ensures your project is completed on time, every time.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality Materials</h3>
+                    <p>We use only premium materials from trusted brands like Sherwin-Williams to ensure lasting beauty and protection for your property.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Professional Team</h3>
+                    <p>Our skilled technicians are trained, background-checked, and committed to delivering exceptional service from start to finish.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Overview Section -->
-    <section class="about section-padding">
+    <section class="services section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
@@ -196,8 +144,11 @@
                         <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Painting Services">
                     </div>
                     <div class="service-content">
-                        <h3>Interior & Exterior Painting</h3>
+                        <h3><i class="fas fa-paint-roller"></i> Interior & Exterior Painting</h3>
                         <p>Transform your space with our professional painting services. We work with premium paints including Sherwin-Williams to ensure lasting beauty and protection for your property.</p>
+                        <div class="service-cta">
+                            <a href="services.html" class="btn btn-small">Learn More</a>
+                        </div>
                     </div>
                 </div>
                 <div class="service-card">
@@ -205,8 +156,11 @@
                         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pressure Washing">
                     </div>
                     <div class="service-content">
-                        <h3>Pressure & Soft Washing</h3>
+                        <h3><i class="fas fa-spray-can"></i> Pressure & Soft Washing</h3>
                         <p>Restore your property's curb appeal with our professional washing services. We safely remove dirt, algae, and stains from roofs, driveways, and exterior surfaces.</p>
+                        <div class="service-cta">
+                            <a href="services.html" class="btn btn-small">Learn More</a>
+                        </div>
                     </div>
                 </div>
                 <div class="service-card">
@@ -214,9 +168,26 @@
                         <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Garage Epoxy">
                     </div>
                     <div class="service-content">
-                        <h3>Garage Epoxy Flooring</h3>
+                        <h3><i class="fas fa-gem"></i> Garage Epoxy Flooring</h3>
                         <p>Upgrade your garage with durable, stunning epoxy floors. Our seamless finishes transform functional spaces into showpiece areas that are easy to clean and maintain.</p>
+                        <div class="service-cta">
+                            <a href="services.html" class="btn btn-small">Learn More</a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Property?</h2>
+                <p>Get your free, no-obligation estimate today and experience the Premier Contractors FL difference</p>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn btn-large">Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline btn-large">Call: (727) 355-6223</a>
                 </div>
             </div>
         </div>
@@ -228,10 +199,11 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h3>Premier Contractors FL</h3>
-                    <p>Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
+                    <p>Flawless Walls, Lasting Impressions. Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:support@premiercontractorsfl.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -241,6 +213,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -252,13 +225,19 @@
                         <li><a href="services.html">Pressure Washing</a></li>
                         <li><a href="services.html">Soft Washing</a></li>
                         <li><a href="services.html">Garage Epoxy</a></li>
+                        <li><a href="services.html">Deck Staining</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Contact Info</h3>
-                    <p><i class="fas fa-phone"></i> (727) 355-6223</p>
-                    <p><i class="fas fa-envelope"></i> support@premiercontractorsfl.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Tampa Bay & Surrounding Areas</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> <a href="tel:7273556223">(727) 355-6223</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:support@premiercontractorsfl.com">support@premiercontractorsfl.com</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Tampa Bay & Surrounding Areas</p>
+                    </div>
+                    <div class="footer-cta">
+                        <a href="contact.html" class="btn btn-small">Get Free Estimate</a>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
@@ -274,26 +253,37 @@
 
     <script src="script.js"></script>
     <script>
-        // Simple counter animation for stats
+        // Counter animation for stats
         document.addEventListener('DOMContentLoaded', function() {
             const counters = document.querySelectorAll('.stat-number');
-            const speed = 200;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-count');
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        };
+                        
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
             
             counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                const updateCount = () => {
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 1);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                
-                updateCount();
+                observer.observe(counter);
             });
         });
     </script>
