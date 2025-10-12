@@ -3,17 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Legacy Builders</title>
+    <title>About Us | Premier Contractors FL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to about page */
+        .about-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .service-icon {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Ensure logo styling is consistent */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-stats {
+                flex-direction: column;
+            }
+            
+            .stat {
+                margin: 15px 0;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">Legacy<span>Builders</span></a>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Premier Contractors FL" class="logo-img">
+                    Premier<span>Contractors</span>
+                </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -30,10 +107,10 @@
     </header>
 
     <!-- About Hero Section -->
-    <section class="hero" style="height: 60vh; min-height: 500px;">
+    <section class="hero" style="height: 60vh; min-height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80'); background-size: cover; background-position: center;">
         <div class="hero-content">
-            <h1>Our Legacy of Excellence</h1>
-            <p>Three decades of transforming visions into architectural masterpieces.</p>
+            <h1>Premier Contractors FL</h1>
+            <p>Clean, reliable, and affordable painting and pressure washing services for Tampa Bay.</p>
         </div>
     </section>
 
@@ -42,106 +119,103 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Building Excellence Since 1995</h2>
-                    <p>Founded in 1995, Legacy Builders emerged with a singular vision: to redefine luxury construction through unparalleled craftsmanship, innovative design, and unwavering commitment to client satisfaction. What began as a small family business has grown into an industry leader, recognized for our ability to transform ambitious visions into breathtaking realities.</p>
-                    <p>Over the past three decades, we have cultivated a reputation for excellence that extends beyond mere construction. We build relationships, trust, and legacies that endure for generations. Our portfolio spans continents, yet our approach remains personal and bespoke to each client's unique needs and aspirations.</p>
+                    <h2>Tampa Bay's Premier Painting & Pressure Washing Experts</h2>
+                    <p>Premier Contractors FL has built a reputation for excellence in residential and commercial painting, pressure washing, soft washing, and garage epoxy services throughout the Tampa Bay area. We take pride in transforming properties with our attention to detail and commitment to quality craftsmanship.</p>
+                    <p>Our team of skilled professionals understands that your home or business is one of your most valuable investments. That's why we approach every project with the care and precision it deserves, using high-quality materials and proven techniques to deliver results that exceed expectations.</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="stat-number" data-count="30">0</div>
-                            <div class="stat-text">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number" data-count="450">0</div>
+                            <div class="stat-number" data-count="100">0</div>
                             <div class="stat-text">Projects Completed</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number" data-count="95">0</div>
+                            <div class="stat-number" data-count="98">0</div>
                             <div class="stat-text">Client Satisfaction</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="24">0</div>
+                            <div class="stat-text">Hour Response</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Modern architecture">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Professional painting services">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Values Section -->
-    <section class="services section-padding" style="background-color: var(--light-gray);">
+    <section class="services section-padding" style="background-color: var(--light);">
         <div class="container">
             <div class="section-title">
-                <h2>Our Core Values</h2>
-                <p>The principles that guide every project we undertake.</p>
+                <h2>Why Choose Premier Contractors FL</h2>
+                <p>Our commitment to excellence sets us apart from the competition.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon" style="text-align: center; font-size: 3rem; color: var(--gold); margin-bottom: 20px;">
-                        <i class="fas fa-medal"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-brush"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Uncompromising Quality</h3>
-                        <p>We never cut corners. From material selection to final finishes, every aspect of our work reflects our commitment to excellence and longevity.</p>
+                        <h3>Expert Craftsmanship</h3>
+                        <p>We take pride in our attention to detail and flawless finishes. From interior painting to exterior transformations, our work speaks for itself in quality and precision.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon" style="text-align: center; font-size: 3rem; color: var(--gold); margin-bottom: 20px;">
-                        <i class="fas fa-lightbulb"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Innovative Solutions</h3>
-                        <p>We embrace cutting-edge technology and creative problem-solving to overcome challenges and deliver exceptional results beyond expectations.</p>
+                        <h3>Clean & Reliable</h3>
+                        <p>We respect your property and time. Our team maintains clean worksites, shows up on schedule, and completes projects efficiently with minimal disruption to your routine.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon" style="text-align: center; font-size: 3rem; color: var(--gold); margin-bottom: 20px;">
-                        <i class="fas fa-handshake"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Client Partnership</h3>
-                        <p>We view our clients as partners in the creative process, ensuring their vision guides every decision while our expertise shapes the outcome.</p>
+                        <h3>Affordable Excellence</h3>
+                        <p>Premium results don't have to come with premium prices. We offer competitive pricing without compromising on the quality of materials or workmanship.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Services Overview Section -->
     <section class="about section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>Our Leadership Team</h2>
-                <p>The visionaries behind our continued success and innovation.</p>
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions for your residential and commercial needs.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="CEO">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Painting Services">
                     </div>
                     <div class="service-content">
-                        <h3>James Richardson</h3>
-                        <p class="client-name">Founder & CEO</p>
-                        <p>With over 35 years in the construction industry, James founded Legacy Builders with a vision to create spaces that transcend time and trends.</p>
+                        <h3>Interior & Exterior Painting</h3>
+                        <p>Transform your space with our professional painting services. We work with premium paints including Sherwin-Williams to ensure lasting beauty and protection for your property.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Lead Architect">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pressure Washing">
                     </div>
                     <div class="service-content">
-                        <h3>Sarah Chen</h3>
-                        <p class="client-name">Lead Architect</p>
-                        <p>Sarah brings an innovative approach to architectural design, blending contemporary aesthetics with functional elegance in every project.</p>
+                        <h3>Pressure & Soft Washing</h3>
+                        <p>Restore your property's curb appeal with our professional washing services. We safely remove dirt, algae, and stains from roofs, driveways, and exterior surfaces.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Project Director">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Garage Epoxy">
                     </div>
                     <div class="service-content">
-                        <h3>Michael Rodriguez</h3>
-                        <p class="client-name">Project Director</p>
-                        <p>Michael ensures every project exceeds expectations through meticulous planning, coordination, and unwavering attention to detail.</p>
+                        <h3>Garage Epoxy Flooring</h3>
+                        <p>Upgrade your garage with durable, stunning epoxy floors. Our seamless finishes transform functional spaces into showpiece areas that are easy to clean and maintain.</p>
                     </div>
                 </div>
             </div>
@@ -153,13 +227,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>Legacy Builders</h3>
-                    <p>Creating exceptional spaces that stand the test of time with unparalleled craftsmanship and attention to detail.</p>
+                    <h3>Premier Contractors FL</h3>
+                    <p>Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -175,24 +247,22 @@
                 <div class="footer-col">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="services.html">Luxury Homes</a></li>
-                        <li><a href="services.html">Commercial Projects</a></li>
-                        <li><a href="services.html">Elite Renovations</a></li>
-                        <li><a href="services.html">Architectural Design</a></li>
-                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="services.html">Interior Painting</a></li>
+                        <li><a href="services.html">Exterior Painting</a></li>
+                        <li><a href="services.html">Pressure Washing</a></li>
+                        <li><a href="services.html">Soft Washing</a></li>
+                        <li><a href="services.html">Garage Epoxy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and project insights.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email" class="form-control">
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (727) 355-6223</p>
+                    <p><i class="fas fa-envelope"></i> support@premiercontractorsfl.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tampa Bay & Surrounding Areas</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Legacy Builders. All Rights Reserved.</p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -203,5 +273,29 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Simple counter animation for stats
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                const updateCount = () => {
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            });
+        });
+    </script>
 </body>
 </html>
