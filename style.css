@@ -680,7 +680,206 @@ header.scrolled {
 .portfolio-item:hover .portfolio-overlay {
     transform: translateY(0);
 }
+/* Portfolio Specific Styles */
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
 
+.portfolio-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-img img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: var(--white);
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.portfolio-overlay p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.portfolio-overlay p:first-of-type {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Portfolio Filter */
+.portfolio-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--secondary-black);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--primary-black);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Project Highlights */
+.project-highlights {
+    background-color: var(--light-gray);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.highlight-item {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.highlight-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.highlight-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.highlight-item:nth-child(even).animate {
+    transform: translateX(0);
+}
+
+.highlight-item:hover {
+    transform: translateY(-10px);
+}
+
+.highlight-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: var(--primary-black);
+}
+
+.highlight-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.highlight-stats {
+    margin-top: 20px;
+}
+
+/* Animation delays for staggered effect */
+.portfolio-item:nth-child(1) { transition-delay: 0.1s; }
+.portfolio-item:nth-child(2) { transition-delay: 0.2s; }
+.portfolio-item:nth-child(3) { transition-delay: 0.3s; }
+.portfolio-item:nth-child(4) { transition-delay: 0.4s; }
+.portfolio-item:nth-child(5) { transition-delay: 0.5s; }
+.portfolio-item:nth-child(6) { transition-delay: 0.6s; }
+
+.highlight-item:nth-child(1) { transition-delay: 0.2s; }
+.highlight-item:nth-child(2) { transition-delay: 0.4s; }
+.highlight-item:nth-child(3) { transition-delay: 0.6s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-btn {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+    
+    .highlight-item {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-item {
+        min-width: 100%;
+    }
+    
+    .highlight-item {
+        padding: 25px 15px;
+    }
+}
 /* Testimonials Section */
 .testimonials-slider {
     max-width: 800px;
