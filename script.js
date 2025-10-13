@@ -1,4 +1,4 @@
-// script.js - Consolidated and Improved Version
+// script.js - Fixed and Improved Version
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,7 +18,7 @@ function initializeAllFunctions() {
     initFormValidation();
 }
 
-// 1. Mobile Navigation Toggle
+// 1. Mobile Navigation Toggle - FIXED
 function initMobileNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -28,6 +28,9 @@ function initMobileNavigation() {
             navLinks.classList.toggle('active');
             hamburger.innerHTML = navLinks.classList.contains('active') ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
 
         // Close mobile menu when clicking on a link
@@ -36,23 +39,38 @@ function initMobileNavigation() {
                 if (window.innerWidth <= 768) {
                     navLinks.classList.remove('active');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = '';
                 }
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = '';
+                }
+            }
         });
     }
 }
 
-// 2. Header Scroll Effect
+// 2. Header Scroll Effect - FIXED
 function initHeaderScrollEffect() {
     const header = document.querySelector('header');
     if (header) {
+        // Initialize scroll state
+        header.classList.toggle('scrolled', window.scrollY > 100);
+        
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
     }
 }
 
-// 3. Portfolio Filtering
+// 3. Portfolio Filtering - FIXED
 function initPortfolioFiltering() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item, .gallery-item');
@@ -71,22 +89,26 @@ function initPortfolioFiltering() {
                 portfolioItems.forEach(item => {
                     if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                         item.style.display = 'block';
-                        // Re-trigger animation for newly shown items
+                        // Add animation class with delay for staggered effect
                         setTimeout(() => {
-                            if (isElementInViewport(item)) {
-                                item.classList.add('animate');
-                            }
+                            item.classList.add('animate');
                         }, 100);
                     } else {
                         item.style.display = 'none';
+                        item.classList.remove('animate');
                     }
                 });
             });
         });
+
+        // Initialize first button as active
+        if (filterButtons.length > 0 && !document.querySelector('.filter-btn.active')) {
+            filterButtons[0].classList.add('active');
+        }
     }
 }
 
-// 4. Testimonials Animation
+// 4. Testimonials Animation - FIXED
 function initTestimonialAnimations() {
     function checkTestimonialItems() {
         const testimonialCards = document.querySelectorAll('.testimonial-card, .stat-item, .testimonial');
@@ -98,13 +120,16 @@ function initTestimonialAnimations() {
         });
     }
 
+    // Use debounced version for better performance
+    const debouncedCheck = debounce(checkTestimonialItems, 10);
+    
     // Initial check and scroll listener
     checkTestimonialItems();
-    window.addEventListener('scroll', checkTestimonialItems);
-    window.addEventListener('resize', checkTestimonialItems);
+    window.addEventListener('scroll', debouncedCheck);
+    window.addEventListener('resize', debouncedCheck);
 }
 
-// 5. Contact Page Animations
+// 5. Contact Page Animations - FIXED
 function initContactAnimations() {
     function checkContactItems() {
         const contactItems = document.querySelectorAll('.contact-item, .contact-form, .area-item, .faq-item');
@@ -119,8 +144,11 @@ function initContactAnimations() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -130,18 +158,24 @@ function initContactAnimations() {
         });
     });
 
+    // Use debounced version for better performance
+    const debouncedCheck = debounce(checkContactItems, 10);
+    
     // Initial check and scroll listener
     checkContactItems();
-    window.addEventListener('scroll', checkContactItems);
-    window.addEventListener('resize', checkContactItems);
+    window.addEventListener('scroll', debouncedCheck);
+    window.addEventListener('resize', debouncedCheck);
 }
 
-// 6. Theme Toggle
+// 6. Theme Toggle - FIXED
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+    
+    if (!themeToggle) return;
+    
+    const themeIcon = themeToggle.querySelector('i');
 
-    if (themeToggle && themeIcon) {
+    if (themeIcon) {
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             if (document.body.classList.contains('dark-mode')) {
@@ -159,20 +193,22 @@ function initThemeToggle() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-mode');
-            if (themeIcon) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
         }
     }
 }
 
-// 7. Counter Animation
+// 7. Counter Animation - FIXED
 function initCounters() {
-    const aboutSection = document.querySelector('.about, .stats');
-    const counters = document.querySelectorAll('.stat-number');
+    const counterSections = document.querySelectorAll('.about, .stats, .counter-section');
+    const counters = document.querySelectorAll('.stat-number, .counter');
 
-    if (aboutSection && counters.length > 0) {
+    if (counterSections.length > 0 && counters.length > 0) {
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -188,28 +224,29 @@ function initCounters() {
             });
         }, observerOptions);
 
-        observer.observe(aboutSection);
+        counterSections.forEach(section => {
+            observer.observe(section);
+        });
     }
 }
 
 function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
-
+    const counters = document.querySelectorAll('.stat-number, .counter');
+    
     counters.forEach(counter => {
         if (!counter.classList.contains('animated')) {
             counter.classList.add('animated');
-            const target = +counter.getAttribute('data-count');
+            const target = +counter.getAttribute('data-count') || +counter.textContent;
             const count = +counter.innerText;
-            const increment = target / speed;
+            const increment = target / 200; // Adjust speed as needed
 
             const updateCounter = () => {
-                const current = +counter.innerText;
+                const current = +counter.innerText.replace(/,/g, '');
                 if (current < target) {
-                    counter.innerText = Math.ceil(current + increment);
+                    counter.innerText = Math.ceil(current + increment).toLocaleString();
                     setTimeout(updateCounter, 1);
                 } else {
-                    counter.innerText = target;
+                    counter.innerText = target.toLocaleString();
                 }
             };
             updateCounter();
@@ -217,21 +254,25 @@ function animateCounters() {
     });
 }
 
-// 8. Section Animations
+// 8. Section Animations - FIXED
 function initSectionAnimations() {
     const sections = document.querySelectorAll('section');
+    
+    if (sections.length === 0) return;
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                const section = entry.target;
+                
                 // Animate images in the section
-                const images = entry.target.querySelectorAll('img');
+                const images = section.querySelectorAll('img:not(.no-animate)');
                 images.forEach(img => {
                     img.classList.add('animate');
                 });
                 
                 // Animate service cards
-                const serviceCards = entry.target.querySelectorAll('.service-card');
+                const serviceCards = section.querySelectorAll('.service-card');
                 serviceCards.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('animate');
@@ -239,7 +280,7 @@ function initSectionAnimations() {
                 });
                 
                 // Animate portfolio items
-                const portfolioItems = entry.target.querySelectorAll('.portfolio-item, .gallery-item');
+                const portfolioItems = section.querySelectorAll('.portfolio-item, .gallery-item');
                 portfolioItems.forEach((item, index) => {
                     setTimeout(() => {
                         item.classList.add('animate');
@@ -247,13 +288,15 @@ function initSectionAnimations() {
                 });
                 
                 // Animate testimonials
-                const testimonials = entry.target.querySelectorAll('.testimonial, .testimonial-card');
-                testimonials.forEach(testimonial => {
-                    testimonial.classList.add('animate');
+                const testimonials = section.querySelectorAll('.testimonial, .testimonial-card');
+                testimonials.forEach((testimonial, index) => {
+                    setTimeout(() => {
+                        testimonial.classList.add('animate');
+                    }, index * 150);
                 });
                 
                 // Animate contact items
-                const contactItems = entry.target.querySelectorAll('.contact-item');
+                const contactItems = section.querySelectorAll('.contact-item');
                 contactItems.forEach((item, index) => {
                     setTimeout(() => {
                         item.classList.add('animate');
@@ -261,14 +304,20 @@ function initSectionAnimations() {
                 });
                 
                 // Animate contact form
-                const contactForm = entry.target.querySelector('.contact-form');
+                const contactForm = section.querySelector('.contact-form');
                 if (contactForm) {
-                    contactForm.classList.add('animate');
+                    setTimeout(() => {
+                        contactForm.classList.add('animate');
+                    }, 300);
                 }
+                
+                // Stop observing after animation
+                sectionObserver.unobserve(section);
             }
         });
     }, {
-        threshold: 0.2
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
     sections.forEach(section => {
@@ -276,7 +325,7 @@ function initSectionAnimations() {
     });
 }
 
-// 9. Form Validation
+// 9. Form Validation - FIXED
 function initFormValidation() {
     const contactForm = document.getElementById('contactForm');
     const estimateForm = document.getElementById('estimateForm');
@@ -291,6 +340,13 @@ function initFormValidation() {
                 contactForm.reset();
             }
         });
+
+        // Real-time validation
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('blur', () => {
+                validateField(input);
+            });
+        });
     }
 
     // Estimate Form Validation
@@ -303,6 +359,13 @@ function initFormValidation() {
                 estimateForm.reset();
             }
         });
+
+        // Real-time validation
+        estimateForm.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('blur', () => {
+                validateField(input);
+            });
+        });
     }
 }
 
@@ -310,32 +373,74 @@ function validateForm(form) {
     const inputs = form.querySelectorAll('input, textarea, select');
     let isValid = true;
     
+    // Clear previous errors
+    form.querySelectorAll('.error-message').forEach(error => error.remove());
+    inputs.forEach(input => input.classList.remove('error'));
+    
     inputs.forEach(input => {
-        if (input.hasAttribute('required') && !input.value.trim()) {
+        if (!validateField(input)) {
             isValid = false;
-            input.style.borderColor = '#ff6b6b';
-            // Add error message
-            if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error-message')) {
-                const errorMsg = document.createElement('span');
-                errorMsg.className = 'error-message';
-                errorMsg.textContent = 'This field is required';
-                errorMsg.style.cssText = 'color: #ff6b6b; font-size: 0.8rem; display: block; margin-top: 5px;';
-                input.parentNode.appendChild(errorMsg);
-            }
-        } else {
-            input.style.borderColor = '';
-            // Remove error message
-            const errorMsg = input.nextElementSibling;
-            if (errorMsg && errorMsg.classList.contains('error-message')) {
-                errorMsg.remove();
-            }
         }
     });
     
     if (!isValid) {
-        alert('Please fill in all required fields.');
+        const firstError = form.querySelector('.error');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
     
+    return isValid;
+}
+
+function validateField(input) {
+    // Clear previous error
+    const existingError = input.nextElementSibling;
+    if (existingError && existingError.classList.contains('error-message')) {
+        existingError.remove();
+    }
+    input.classList.remove('error');
+
+    // Skip validation if field is not required and empty
+    if (!input.hasAttribute('required') && !input.value.trim()) {
+        return true;
+    }
+
+    let isValid = true;
+    let errorMessage = '';
+
+    // Required field validation
+    if (input.hasAttribute('required') && !input.value.trim()) {
+        isValid = false;
+        errorMessage = 'This field is required';
+    }
+    // Email validation
+    else if (input.type === 'email' && input.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(input.value.trim())) {
+            isValid = false;
+            errorMessage = 'Please enter a valid email address';
+        }
+    }
+    // Phone validation
+    else if (input.type === 'tel' && input.value.trim()) {
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        const cleanPhone = input.value.replace(/[^\d+]/g, '');
+        if (!phoneRegex.test(cleanPhone)) {
+            isValid = false;
+            errorMessage = 'Please enter a valid phone number';
+        }
+    }
+
+    if (!isValid) {
+        input.classList.add('error');
+        const errorMsg = document.createElement('span');
+        errorMsg.className = 'error-message';
+        errorMsg.textContent = errorMessage;
+        errorMsg.style.cssText = 'color: #ff6b6b; font-size: 0.8rem; display: block; margin-top: 5px;';
+        input.parentNode.appendChild(errorMsg);
+    }
+
     return isValid;
 }
 
@@ -344,7 +449,7 @@ function showFormSuccess(submitBtn) {
     
     const originalText = submitBtn.innerHTML;
     const originalBg = submitBtn.style.backgroundColor;
-    
+
     submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
     submitBtn.style.backgroundColor = '#28a745';
     submitBtn.disabled = true;
@@ -356,75 +461,20 @@ function showFormSuccess(submitBtn) {
     }, 3000);
 }
 
-// 10. Utility Functions
+// 10. Utility Functions - FIXED
 function isElementInViewport(el) {
     if (!el) return false;
     
     const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
     return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
-        rect.bottom >= 0
+        rect.top <= windowHeight * 0.85 &&
+        rect.bottom >= windowHeight * 0.15
     );
 }
 
-// 11. Floating Background Images (Optional - uncomment if needed)
-/*
-function createFloatingBackgrounds() {
-    const bgImages = [
-        'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-        'https://images.unsplash.com/photo-1581093458791-8a6b4243e0a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
-    ];
-    
-    const bgContainer = document.createElement('div');
-    bgContainer.className = 'floating-backgrounds';
-    bgContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;';
-    
-    bgImages.forEach((src, index) => {
-        const bgImg = document.createElement('img');
-        bgImg.src = src;
-        bgImg.alt = 'Floating background';
-        bgImg.className = `floating-bg floating-bg-${index + 1}`;
-        bgImg.style.cssText = `
-            position: absolute;
-            opacity: 0.1;
-            animation: float 20s infinite linear;
-            animation-delay: ${index * 5}s;
-        `;
-        bgContainer.appendChild(bgImg);
-    });
-    
-    // Add floating animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0% { transform: translateX(-100px) translateY(-100px) rotate(0deg); }
-            100% { transform: translateX(100px) translateY(100px) rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    document.body.appendChild(bgContainer);
-}
-
-// Initialize floating backgrounds if needed
-// createFloatingBackgrounds();
-*/
-
-// 12. Error Handling and Fallbacks
-window.addEventListener('error', function(e) {
-    console.error('JavaScript Error:', e.error);
-});
-
-// Make sure all images have lazy loading
-document.querySelectorAll('img').forEach(img => {
-    if (!img.hasAttribute('loading')) {
-        img.setAttribute('loading', 'lazy');
-    }
-});
-
-// Performance optimization: Debounce scroll events
+// 11. Debounce function for performance
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -437,7 +487,68 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debouncing to scroll-heavy functions
-window.addEventListener('scroll', debounce(function() {
-    // Scroll-dependent functions will be called here
-}, 10));
+// 12. Error Handling and Fallbacks
+window.addEventListener('error', function(e) {
+    console.error('JavaScript Error:', e.error);
+});
+
+// Make sure all images have lazy loading and alt attributes
+document.querySelectorAll('img').forEach(img => {
+    if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+    }
+    if (!img.hasAttribute('alt')) {
+        img.setAttribute('alt', 'Image');
+    }
+});
+
+// Add CSS for animations if not present
+function ensureAnimationStyles() {
+    if (!document.getElementById('dynamic-animation-styles')) {
+        const style = document.createElement('style');
+        style.id = 'dynamic-animation-styles';
+        style.textContent = `
+            .animate {
+                animation: fadeInUp 0.6s ease-out forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .error {
+                border-color: #ff6b6b !important;
+            }
+            
+            .dark-mode {
+                background: #1a1a1a;
+                color: #ffffff;
+            }
+            
+            /* Smooth transitions for theme toggle */
+            body {
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// Initialize animation styles
+ensureAnimationStyles();
+
+// Export functions for global access (if needed)
+window.App = {
+    init: initializeAllFunctions,
+    utils: {
+        debounce,
+        isElementInViewport
+    }
+};
