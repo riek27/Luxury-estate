@@ -432,3 +432,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on resize (in case layout changes)
     window.addEventListener('resize', checkContactItems);
 });
+// ===== COUNTER ANIMATION =====
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll(".stat-number");
+
+    counters.forEach(counter => {
+        const text = counter.textContent.trim();
+        const match = text.match(/([\d.]+)/); // get the number part only
+        if (!match) return;
+
+        const target = parseFloat(match[1]);
+        const suffix = text.replace(match[1], ""); // keep 'Days', '%', etc.
+
+        let current = 0;
+        const duration = 1500; // animation duration (ms)
+        const frameRate = 30;  // update every 30ms
+        const increment = target / (duration / frameRate);
+
+        const updateCounter = () => {
+            current += increment;
+            if (current >= target) {
+                counter.textContent = target + suffix;
+            } else {
+                counter.textContent = Math.floor(current) + suffix;
+                setTimeout(updateCounter, frameRate);
+            }
+        };
+
+        // Start counting animation
+        counter.textContent = "0" + suffix;
+        updateCounter();
+    });
+});
