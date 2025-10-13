@@ -441,3 +441,301 @@ function debounce(func, wait) {
 window.addEventListener('scroll', debounce(function() {
     // Scroll-dependent functions will be called here
 }, 10));
+// portfolio.js - JavaScript for Portfolio Page Only
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializePortfolioFunctions();
+});
+
+function initializePortfolioFunctions() {
+    initMobileNavigation();
+    initHeaderScrollEffect();
+    initPortfolioFiltering();
+    initLightbox();
+    initScrollAnimations();
+}
+
+// Mobile Navigation Toggle (specific to portfolio page)
+function initMobileNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    }
+}
+
+// Header Scroll Effect
+function initHeaderScrollEffect() {
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+    }
+}
+
+// Portfolio Filtering Functionality
+function initPortfolioFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item, .gallery-item');
+
+    if (filterButtons.length > 0 && portfolioItems.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        // Re-trigger animation for newly shown items
+                        setTimeout(() => {
+                            if (isElementInViewport(item)) {
+                                item.classList.add('animate');
+                            }
+                        }, 100);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+}
+
+// Lightbox Functionality for Portfolio Images
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    
+    const portfolioItems = document.querySelectorAll('.portfolio-item, .gallery-item');
+    
+    if (!lightbox || !lightboxImg) return;
+    
+    let currentImageIndex = 0;
+    const images = Array.from(portfolioItems);
+
+    // Open lightbox when clicking on portfolio item
+    portfolioItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            currentImageIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Navigation between images
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightbox();
+        });
+    }
+
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightbox();
+        });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightbox();
+        } else if (e.key === 'ArrowRight') {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightbox();
+        }
+    });
+
+    function updateLightbox() {
+        const currentItem = images[currentImageIndex];
+        const imgSrc = currentItem.querySelector('img').getAttribute('src');
+        const title = currentItem.querySelector('h3').textContent;
+        const location = currentItem.querySelector('p:first-of-type').textContent;
+        const description = currentItem.querySelector('p:last-of-type').textContent;
+        
+        lightboxImg.setAttribute('src', imgSrc);
+        lightboxImg.setAttribute('alt', title);
+        
+        if (lightboxCaption) {
+            lightboxCaption.innerHTML = `<h3>${title}</h3><p>${location}</p><p>${description}</p>`;
+        }
+    }
+}
+
+// Scroll Animations for Portfolio Items
+function initScrollAnimations() {
+    function checkPortfolioItems() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item, .gallery-item');
+        
+        portfolioItems.forEach(item => {
+            if (isElementInViewport(item) && item.style.display !== 'none') {
+                item.classList.add('animate');
+            }
+        });
+    }
+    
+    // Initial check on page load
+    checkPortfolioItems();
+    
+    // Check on scroll with debouncing
+    window.addEventListener('scroll', debounce(checkPortfolioItems, 10));
+    
+    // Check on resize
+    window.addEventListener('resize', checkPortfolioItems);
+}
+
+// Utility Functions
+function isElementInViewport(el) {
+    if (!el) return false;
+    
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+        rect.bottom >= 0
+    );
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Add lazy loading to all portfolio images
+document.querySelectorAll('.portfolio-item img, .gallery-item img').forEach(img => {
+    if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+    }
+});
+
+// Smooth scroll for "Get Free Estimate" buttons
+document.querySelectorAll('a[href="contact.html"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.getAttribute('href') === 'contact.html') {
+            // Allow default behavior - navigating to contact page
+            return true;
+        }
+    });
+});
+
+// Add loading state to filter buttons
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Add temporary active state feedback
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
+});
+
+// Preload images for better lightbox experience
+function preloadLightboxImages() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item, .gallery-item');
+    portfolioItems.forEach(item => {
+        const img = new Image();
+        img.src = item.querySelector('img').getAttribute('src');
+    });
+}
+
+// Start preloading after page load
+window.addEventListener('load', preloadLightboxImages);
+
+// Handle responsive behavior for portfolio grid
+function handleResponsivePortfolio() {
+    const portfolioGrid = document.querySelector('.portfolio-grid, .gallery-grid');
+    if (!portfolioGrid) return;
+    
+    function adjustGrid() {
+        if (window.innerWidth < 768) {
+            portfolioGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+        } else if (window.innerWidth < 992) {
+            portfolioGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+        } else {
+            portfolioGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
+        }
+    }
+    
+    // Initial adjustment
+    adjustGrid();
+    
+    // Adjust on resize
+    window.addEventListener('resize', debounce(adjustGrid, 250));
+}
+
+// Initialize responsive portfolio
+handleResponsivePortfolio();
+
+// Error handling for images
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+        console.warn('Image failed to load:', this.src);
+        this.alt = 'Image not available';
+        // Optional: Set a placeholder image
+        // this.src = 'assets/placeholder.jpg';
+    });
+});
+
+// Performance monitoring for portfolio interactions
+if ('performance' in window) {
+    const portfolioLoadTime = performance.now();
+    console.log(`Portfolio page loaded in ${portfolioLoadTime} milliseconds`);
+}
