@@ -6,7 +6,698 @@
     <title>Our Services | Premier Contractors FL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --white: #ffffff;
+            --stone-gray: #e8e8e8;
+            --light-gray: #f5f5f5;
+            --gold: #d4af37;
+            --light-gold: #f4e4a6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/servic.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            cursor: pointer;
+            background-color: var(--white);
+        }
+
+        .service-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-img {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-item:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .service-item:hover .service-overlay {
+            transform: translateY(0);
+        }
+
+        .service-overlay h3 {
+            color: var(--white);
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        .service-overlay p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-align: left;
+        }
+
+        .service-overlay p:first-of-type {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Process Section */
+        .process {
+            background-color: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            color: var(--primary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-banner {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('assets/servi.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2:after {
+            background-color: var(--gold);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .footer-contact a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-cta {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--stone-gray);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-header {
+                height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+                margin-right: 5px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .service-item:nth-child(1) { transition-delay: 0.1s; }
+        .service-item:nth-child(2) { transition-delay: 0.2s; }
+        .service-item:nth-child(3) { transition-delay: 0.3s; }
+        .service-item:nth-child(4) { transition-delay: 0.4s; }
+        .service-item:nth-child(5) { transition-delay: 0.5s; }
+        .service-item:nth-child(6) { transition-delay: 0.6s; }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -14,7 +705,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img">
+                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img" loading="lazy">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -47,130 +738,89 @@
         </div>
     </section>
 
-    <!-- Main Services Section -->
-<section class="services section-padding">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Core Services</h2>
-            <p>Comprehensive solutions for residential and commercial properties across Tampa Bay</p>
-        </div>
-        <div class="services-grid">
-            <!-- Interior Painting -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/inter.jpg" alt="Interior painting of a modern living room with fresh paint">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-paint-roller"></i> Interior Painting</h3>
-                    <p>Transform your living spaces with flawless finishes and expert color application that reflects your style.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Walls, Ceilings & Trim Work</li>
-                        <li><i class="fas fa-check"></i> Cabinet Refinishing</li>
-                        <li><i class="fas fa-check"></i> Color Consultation</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Start Your Project</a>
+    <!-- Services Section -->
+    <section class="services section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>Comprehensive solutions for residential and commercial properties across Tampa Bay</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Interior Painting -->
+                <div class="service-item" data-category="painting">
+                    <div class="service-img">
+                        <img src="assets/inter.jpg" alt="Interior painting of a modern living room with fresh paint" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Interior Painting</h3>
+                        <p>Walls, Ceilings & Trim</p>
+                        <p>Transform your living spaces with flawless finishes and expert color application</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Exterior Painting -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/exter.jpg" alt="Freshly painted white house exterior with blue sky">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-home"></i> Exterior Painting</h3>
-                    <p>Enhance and protect your home's exterior with durable, weather-resistant coatings that stand the test of time.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Surface Preparation</li>
-                        <li><i class="fas fa-check"></i> Long-Lasting Protection</li>
-                        <li><i class="fas fa-check"></i> New Construction & Repaints</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Protect Your Home</a>
+                
+                <!-- Exterior Painting -->
+                <div class="service-item" data-category="painting">
+                    <div class="service-img">
+                        <img src="assets/exter.jpg" alt="Freshly painted white house exterior with blue sky" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Exterior Painting</h3>
+                        <p>Homes & Commercial Buildings</p>
+                        <p>Enhance and protect your property with durable, weather-resistant coatings</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Pressure Washing -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/pressure.jpg" alt="Pressure washer cleaning a concrete driveway">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-spray-can"></i> Pressure Washing</h3>
-                    <p>Restore your property's clean appearance by removing dirt, grime, and stains from hard surfaces.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Driveway & Sidewalk Cleaning</li>
-                        <li><i class="fas fa-check"></i> Patio & Pool Deck Restoration</li>
-                        <li><i class="fas fa-check"></i> Commercial Property Washing</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Schedule a Cleaning</a>
+                
+                <!-- Pressure Washing -->
+                <div class="service-item" data-category="washing">
+                    <div class="service-img">
+                        <img src="assets/pressure.jpg" alt="Pressure washer cleaning a concrete driveway" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Pressure Washing</h3>
+                        <p>Driveways & Hard Surfaces</p>
+                        <p>Restore your property's clean appearance by removing dirt, grime, and stains</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Soft Washing -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/soft.jpg" alt="Low-pressure soft washing being applied to a roof">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-tint"></i> Soft Washing</h3>
-                    <p>Gently clean roofs and delicate surfaces without the damage of high pressure, effectively removing algae and mold.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Roof Cleaning</li>
-                        <li><i class="fas fa-check"></i> Safe for All Exterior Surfaces</li>
-                        <li><i class="fas fa-check"></i> Algae & Mold Removal</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Gentle Cleaning</a>
+                
+                <!-- Soft Washing -->
+                <div class="service-item" data-category="washing">
+                    <div class="service-img">
+                        <img src="assets/soft.jpg" alt="Low-pressure soft washing being applied to a roof" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Soft Washing</h3>
+                        <p>Roofs & Delicate Surfaces</p>
+                        <p>Gently clean without damage, effectively removing algae and mold</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Garage Epoxy -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/garage.jpg" alt="Sleek, glossy epoxy flooring in a modern garage">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-gem"></i> Garage Epoxy</h3>
-                    <p>Upgrade your garage with a durable, chemical-resistant, and easy-to-clean floor that adds value to your home.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Chemical & Stain Resistant</li>
-                        <li><i class="fas fa-check"></i> Non-Slip Safety Surface</li>
-                        <li><i class="fas fa-check"></i> Increases Property Value</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Transform Your Garage</a>
+                
+                <!-- Garage Epoxy -->
+                <div class="service-item" data-category="epoxy">
+                    <div class="service-img">
+                        <img src="assets/garage.jpg" alt="Sleek, glossy epoxy flooring in a modern garage" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Garage Epoxy</h3>
+                        <p>Durable & Beautiful Floors</p>
+                        <p>Upgrade your garage with a durable, chemical-resistant, and easy-to-clean floor</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Deck & Fence Staining -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/deck.jpg" alt="Newly stained wooden deck in a backyard">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-tree"></i> Deck & Fence Staining</h3>
-                    <p>Protect and beautify your outdoor wood surfaces with premium stains and sealants that prevent weathering.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Deck & Fence Cleaning</li>
-                        <li><i class="fas fa-check"></i> Restoration & Protection</li>
-                        <li><i class="fas fa-check"></i> Enhanced Wood Grain</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="contact.html" class="btn">Renew Your Deck</a>
+                
+                <!-- Deck & Fence Staining -->
+                <div class="service-item" data-category="deck">
+                    <div class="service-img">
+                        <img src="assets/deck.jpg" alt="Newly stained wooden deck in a backyard" loading="lazy">
+                    </div>
+                    <div class="service-overlay">
+                        <h3>Deck & Fence Staining</h3>
+                        <p>Outdoor Wood Protection</p>
+                        <p>Protect and beautify your outdoor wood surfaces with premium stains and sealants</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Process Section -->
     <section class="process section-padding">
@@ -238,6 +888,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -271,11 +922,124 @@
         </div>
     </footer>
 
-     <!-- Theme Toggle -->
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
         <i class="fas fa-moon"></i>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll animation for service items
+            function checkServiceItems() {
+                const serviceItems = document.querySelectorAll('.service-item');
+                
+                serviceItems.forEach(item => {
+                    if (isElementInViewport(item) && item.style.display !== 'none') {
+                        item.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Check if element is in viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Initial check on page load
+            checkServiceItems();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkServiceItems);
+            
+            // Check on resize (in case layout changes)
+            window.addEventListener('resize', checkServiceItems);
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+            
+            // Add dark mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.dark-mode {
+                    --primary-black: #f5f5f5;
+                    --secondary-black: #e8e8e8;
+                    --white: #1a1a1a;
+                    --stone-gray: #2d2d2d;
+                    --light-gray: #2d2d2d;
+                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+                
+                body.dark-mode .services {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .process {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .service-item {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .process-step {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .footer-contact a,
+                body.dark-mode .footer-links a {
+                    color: #b0b0b0;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
