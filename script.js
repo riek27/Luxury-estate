@@ -350,3 +350,85 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on resize (in case layout changes)
     window.addEventListener('resize', checkTestimonialItems);
 });
+// Contact Page Animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Scroll animation for contact items
+    function checkContactItems() {
+        const contactItems = document.querySelectorAll('.contact-item, .contact-form, .area-item, .faq-item');
+        
+        contactItems.forEach(item => {
+            if (isElementInViewport(item)) {
+                item.classList.add('animate');
+            }
+        });
+    }
+    
+    // Check if element is in viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Form submission handling
+    const contactForm = document.getElementById('estimateForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const formData = new FormData(contactForm);
+            let isValid = true;
+            
+            // Check required fields
+            contactForm.querySelectorAll('[required]').forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff6b6b';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (isValid) {
+                // Show success message (in a real app, you would send data to server)
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                submitBtn.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.backgroundColor = '';
+                    contactForm.reset();
+                }, 3000);
+            }
+        });
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Initial check on page load
+    checkContactItems();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkContactItems);
+    
+    // Check on resize (in case layout changes)
+    window.addEventListener('resize', checkContactItems);
+});
