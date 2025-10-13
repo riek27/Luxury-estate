@@ -136,6 +136,16 @@
             color: var(--primary-black);
         }
 
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 60px;
@@ -204,6 +214,10 @@
             position: relative;
         }
 
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
         .nav-links a:after {
             content: '';
             position: absolute;
@@ -215,14 +229,8 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover:after {
+        .nav-links a:hover:after, .nav-links a.active:after {
             width: 100%;
-        }
-
-        .nav-links .btn-small {
-            margin-left: 10px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
         }
 
         .hamburger {
@@ -268,6 +276,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         /* Gallery Section */
@@ -301,8 +310,8 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .gallery-item {
@@ -473,6 +482,39 @@
             right: 20px;
         }
 
+        /* CTA Section */
+        .cta-banner {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2:after {
+            background-color: var(--gold);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary-black);
@@ -572,6 +614,28 @@
             color: var(--stone-gray);
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
@@ -655,6 +719,11 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
             }
             
             .lightbox-nav {
@@ -900,22 +969,19 @@
         </div>
     </section>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightbox-close">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next" id="lightbox-next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <img class="lightbox-img" id="lightbox-img" src="" alt="" loading="eager">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
+    <!-- CTA Section -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Property?</h2>
+                <p>Get your free, no-obligation estimate today and experience the Premier Contractors FL difference</p>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn btn-large">Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline btn-large">Call: (727) 355-6223</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -971,7 +1037,24 @@
         </div>
     </footer>
 
-      <!-- Theme Toggle -->
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="" loading="eager">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
         <i class="fas fa-moon"></i>
     </div>
@@ -1025,6 +1108,16 @@
                         }
                     });
                 });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
             
             // Lightbox Functionality
@@ -1130,6 +1223,47 @@
             
             // Check on resize (in case layout changes)
             window.addEventListener('resize', checkGalleryItems);
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+            
+            // Add dark mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.dark-mode {
+                    --primary-black: #f5f5f5;
+                    --secondary-black: #e8e8e8;
+                    --white: #1a1a1a;
+                    --stone-gray: #2d2d2d;
+                    --light-gray: #2d2d2d;
+                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+                
+                body.dark-mode .gallery {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .footer-contact a,
+                body.dark-mode .footer-links a {
+                    color: #b0b0b0;
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
