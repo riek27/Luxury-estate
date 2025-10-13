@@ -6,7 +6,734 @@
     <title>Client Testimonials | Premier Contractors FL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --white: #ffffff;
+            --stone-gray: #e8e8e8;
+            --light-gray: #f5f5f5;
+            --gold: #d4af37;
+            --light-gold: #f4e4a6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            cursor: pointer;
+            background-color: var(--white);
+        }
+
+        .testimonial-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .client-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-details h3 {
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        .client-details p {
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--secondary-black);
+            opacity: 0.8;
+        }
+
+        .client-rating {
+            margin-bottom: 20px;
+        }
+
+        .client-rating i {
+            color: var(--gold);
+            margin-right: 2px;
+        }
+
+        .client-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .client-text:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--gold);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .project-info {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--stone-gray);
+        }
+
+        .project-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--secondary-black);
+        }
+
+        .project-info i {
+            margin-right: 8px;
+            color: var(--gold);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .stat-icon i {
+            font-size: 2rem;
+            color: var(--primary-black);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-black);
+        }
+
+        /* CTA Section */
+        .cta-banner {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2:after {
+            background-color: var(--gold);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .footer-contact a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-cta {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--stone-gray);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-header {
+                height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+                margin-right: 5px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .testimonial-item:nth-child(1) { transition-delay: 0.1s; }
+        .testimonial-item:nth-child(2) { transition-delay: 0.2s; }
+        .testimonial-item:nth-child(3) { transition-delay: 0.3s; }
+        .testimonial-item:nth-child(4) { transition-delay: 0.4s; }
+        .testimonial-item:nth-child(5) { transition-delay: 0.5s; }
+        .testimonial-item:nth-child(6) { transition-delay: 0.6s; }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -14,7 +741,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img">
+                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img" loading="lazy">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -22,7 +749,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
-                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="testimonials.html" class="active">Testimonials</a></li>
                     <li><a href="contact.html" class="btn btn-small">Contact</a></li>
                 </ul>
@@ -56,141 +783,153 @@
             </div>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Robert Johnson">
+                <div class="testimonial-item" data-category="painting">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Robert Johnson" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>Robert Johnson</h3>
+                                <p>Homeowner, Tampa</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>Robert Johnson</h3>
-                            <p>Homeowner, Tampa</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"Working with Premier Contractors FL was an exceptional experience from start to finish. Their attention to detail and commitment to quality surpassed all our expectations. Our home exterior painting looks brand new and the pressure washing made our driveway sparkle!"</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-paint-roller"></i> Exterior Painting & Pressure Washing</p>
+                        <p class="client-text">"Working with Premier Contractors FL was an exceptional experience from start to finish. Their attention to detail and commitment to quality surpassed all our expectations. Our home exterior painting looks brand new and the pressure washing made our driveway sparkle!"</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-paint-roller"></i> Exterior Painting & Pressure Washing</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Martinez">
+                <div class="testimonial-item" data-category="painting">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Martinez" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>Sarah Martinez</h3>
+                                <p>Business Owner, St. Petersburg</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>Sarah Martinez</h3>
-                            <p>Business Owner, St. Petersburg</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"The team at Premier Contractors FL transformed our office interior with their professional painting services. They were respectful of our business hours and completed the work efficiently with minimal disruption. The quality is outstanding and our employees love the new look!"</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-building"></i> Commercial Interior Painting</p>
+                        <p class="client-text">"The team at Premier Contractors FL transformed our office interior with their professional painting services. They were respectful of our business hours and completed the work efficiently with minimal disruption. The quality is outstanding and our employees love the new look!"</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-building"></i> Commercial Interior Painting</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Chen">
+                <div class="testimonial-item" data-category="epoxy">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Chen" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>Michael Chen</h3>
+                                <p>Homeowner, Clearwater</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>Michael Chen</h3>
-                            <p>Homeowner, Clearwater</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"I can't say enough good things about Premier Contractors FL. Their garage epoxy flooring service transformed my messy garage into a showroom. The team was professional, on time, and the result exceeded my expectations. Highly recommended!"</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-gem"></i> Garage Epoxy Flooring</p>
+                        <p class="client-text">"I can't say enough good things about Premier Contractors FL. Their garage epoxy flooring service transformed my messy garage into a showroom. The team was professional, on time, and the result exceeded my expectations. Highly recommended!"</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-gem"></i> Garage Epoxy Flooring</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer Wilson">
+                <div class="testimonial-item" data-category="washing">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer Wilson" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>Jennifer Wilson</h3>
+                                <p>Property Manager, Brandon</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>Jennifer Wilson</h3>
-                            <p>Property Manager, Brandon</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"We've used Premier Contractors FL for multiple properties in our portfolio. Their pressure washing services have revitalized our buildings' exteriors, and their painting work always looks professional. Reliable, affordable, and high-quality work every time."</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-spray-can"></i> Multi-Property Pressure Washing</p>
+                        <p class="client-text">"We've used Premier Contractors FL for multiple properties in our portfolio. Their pressure washing services have revitalized our buildings' exteriors, and their painting work always looks professional. Reliable, affordable, and high-quality work every time."</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-spray-can"></i> Multi-Property Pressure Washing</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Thompson">
+                <div class="testimonial-item" data-category="painting">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Thompson" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>David Thompson</h3>
+                                <p>Restaurant Owner, Lakeland</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>David Thompson</h3>
-                            <p>Restaurant Owner, Lakeland</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"Premier Contractors FL did an amazing job on our restaurant's interior painting. They worked around our business hours and completed the project ahead of schedule. The transformation has impressed our customers and created a more inviting atmosphere."</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-utensils"></i> Restaurant Interior Painting</p>
+                        <p class="client-text">"Premier Contractors FL did an amazing job on our restaurant's interior painting. They worked around our business hours and completed the project ahead of schedule. The transformation has impressed our customers and created a more inviting atmosphere."</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-utensils"></i> Restaurant Interior Painting</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Amanda Roberts">
+                <div class="testimonial-item" data-category="painting">
+                    <div class="testimonial-content">
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Amanda Roberts" loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h3>Amanda Roberts</h3>
+                                <p>Homeowner, Sarasota</p>
+                            </div>
                         </div>
-                        <div class="client-details">
-                            <h3>Amanda Roberts</h3>
-                            <p>Homeowner, Sarasota</p>
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                    </div>
-                    <div class="client-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="client-text">"After a bad experience with another contractor, I was hesitant to try again. Premier Contractors FL restored my faith in home service companies. Their team was professional, the communication was excellent, and the interior painting results are beautiful. Thank you!"</p>
-                    <div class="project-info">
-                        <p><i class="fas fa-home"></i> Complete Interior Painting</p>
+                        <p class="client-text">"After a bad experience with another contractor, I was hesitant to try again. Premier Contractors FL restored my faith in home service companies. Their team was professional, the communication was excellent, and the interior painting results are beautiful. Thank you!"</p>
+                        <div class="project-info">
+                            <p><i class="fas fa-home"></i> Complete Interior Painting</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,6 +1010,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -309,6 +1049,160 @@
         <i class="fas fa-moon"></i>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll animation for testimonial items
+            function checkTestimonialItems() {
+                const testimonialItems = document.querySelectorAll('.testimonial-item');
+                
+                testimonialItems.forEach(item => {
+                    if (isElementInViewport(item) && item.style.display !== 'none') {
+                        item.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Check if element is in viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Initial check on page load
+            checkTestimonialItems();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkTestimonialItems);
+            
+            // Check on resize (in case layout changes)
+            window.addEventListener('resize', checkTestimonialItems);
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+            
+            // Add dark mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.dark-mode {
+                    --primary-black: #f5f5f5;
+                    --secondary-black: #e8e8e8;
+                    --white: #1a1a1a;
+                    --stone-gray: #2d2d2d;
+                    --light-gray: #2d2d2d;
+                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+                
+                body.dark-mode .testimonials {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .stats {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .testimonial-item {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .stat-item {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .footer-contact a,
+                body.dark-mode .footer-links a {
+                    color: #b0b0b0;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Animated counter for stats
+            function animateCounter() {
+                const counters = document.querySelectorAll('.stat-number');
+                const speed = 200; // The lower the slower
+                
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-count');
+                        const count = +counter.innerText;
+                        
+                        // Lower inc to slow and higher to slow
+                        const inc = target / speed;
+                        
+                        // Check if target is reached
+                        if (count < target) {
+                            // Add inc to count and output in counter
+                            counter.innerText = Math.ceil(count + inc);
+                            // Call function every ms
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCount();
+                });
+            }
+            
+            // Initialize counter animation when stats section is in viewport
+            function checkStatsSection() {
+                const statsSection = document.querySelector('.stats');
+                if (isElementInViewport(statsSection)) {
+                    animateCounter();
+                    // Remove event listener after animation is triggered
+                    window.removeEventListener('scroll', checkStatsSection);
+                }
+            }
+            
+            // Check stats section on scroll
+            window.addEventListener('scroll', checkStatsSection);
+        });
+    </script>
 </body>
 </html>
