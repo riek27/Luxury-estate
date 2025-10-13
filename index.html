@@ -243,59 +243,154 @@
             font-size: 1.5rem;
         }
 
-        /* Page Header - Enhanced with Larger Background */
-        .page-header {
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/flori.jpg') no-repeat center center/cover;
-            color: var(--white);
-            text-align: center;
-            margin-top: 80px;
-        }
+        /* Page Header - Enhanced with Larger Background and Centered Text */
+.page-header {
+    min-height: 90vh; /* Changed from height to min-height for better responsiveness */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600585154340-96321f5c1156?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    margin-top: 80px;
+    padding: 40px 0; /* Added padding to ensure content doesn't touch edges */
+}
 
-        .page-header-content {
-            max-width: 800px;
-            padding: 0 20px;
-        }
+.page-header-content {
+    max-width: 800px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-        .page-header h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
+.page-header h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--white);
+    text-align: center;
+    width: 100%;
+}
 
-        .page-header p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-        }
+.page-header p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
 
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 100%;
+}
 
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    width: 100%;
+}
 
-        .badge {
-            padding: 10px 20px;
-            background-color: rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--gold);
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+.badge {
+    padding: 10px 20px;
+    background-color: rgba(212, 175, 55, 0.2);
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Updated Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .page-header {
+        min-height: 85vh; /* Increased from 70vh to 85vh */
+        margin-top: 70px;
+        padding: 30px 0; /* Added padding for mobile */
+    }
+    
+    .page-header h1 {
+        font-size: 2.8rem; /* Slightly larger than previous 2.5rem */
+        margin-bottom: 15px;
+    }
+    
+    .page-header p {
+        font-size: 1.3rem; /* Slightly larger than previous 1.2rem */
+        margin-bottom: 25px;
+    }
+    
+    .hero-badges {
+        margin-top: 30px;
+        gap: 10px;
+    }
+    
+    .badge {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        min-height: 80vh; /* Increased from default to ensure content fits */
+        padding: 20px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 2.3rem; /* Adjusted for better fit */
+        margin-bottom: 15px;
+    }
+    
+    .page-header p {
+        font-size: 1.1rem; /* Adjusted for better fit */
+        margin-bottom: 20px;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .hero-badges {
+        margin-top: 25px;
+    }
+    
+    .badge {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .page-header {
+        min-height: 75vh; /* Further adjustment for very small screens */
+    }
+    
+    .page-header h1 {
+        font-size: 2rem; /* Further adjustment for very small screens */
+    }
+    
+    .page-header p {
+        font-size: 1rem; /* Further adjustment for very small screens */
+    }
+    
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
         /* Services Section */
         .services {
