@@ -7,7 +7,926 @@
     <meta name="description" content="Professional painting, pressure washing, and epoxy services in Tampa Bay. Flawless walls, lasting impressions with clean, reliable, and affordable solutions.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --white: #ffffff;
+            --stone-gray: #e8e8e8;
+            --light-gray: #f5f5f5;
+            --gold: #d4af37;
+            --light-gold: #f4e4a6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Page Header - Enhanced with Larger Background */
+        .page-header {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/flori.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            background-color: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            cursor: pointer;
+            background-color: var(--white);
+        }
+
+        .service-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-img {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-item:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .service-item:hover .service-overlay {
+            transform: translateY(0);
+        }
+
+        .service-overlay h3 {
+            color: var(--white);
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        .service-overlay p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-align: left;
+        }
+
+        .service-overlay p:first-of-type {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .services-cta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-text p {
+            text-align: left;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .usp-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .usp-item i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .usp-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .usp-item p {
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .about-cta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Service Areas Section */
+        .areas {
+            background-color: var(--light-gray);
+        }
+
+        .areas-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background-color: var(--stone-gray);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-black);
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .areas-list h3 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .city {
+            padding: 10px 15px;
+            background-color: var(--white);
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            font-weight: 500;
+        }
+
+        .areas-cta p {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Preview Section */
+        .contact-preview {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.2rem;
+            color: var(--primary-black);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            text-align: left;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--secondary-black);
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--gold);
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--stone-gray);
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* CTA Section */
+        .cta-banner {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('assets/called.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2:after {
+            background-color: var(--gold);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .footer-contact a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-cta {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--stone-gray);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-header h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-content, .areas-content, .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-text h2, .about-text p {
+                text-align: center;
+            }
+            
+            .about-text h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .usp-item {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .usp-item h3, .usp-item p {
+                text-align: center;
+            }
+            
+            .about-cta {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-header {
+                height: 70vh;
+                margin-top: 70px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-img {
+                height: 250px;
+            }
+            
+            .hero-btns, .services-cta, .about-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+                margin-right: 5px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .service-item:nth-child(1) { transition-delay: 0.1s; }
+        .service-item:nth-child(2) { transition-delay: 0.2s; }
+        .service-item:nth-child(3) { transition-delay: 0.3s; }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -15,7 +934,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img">
+                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img" loading="lazy">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -34,78 +953,69 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Flawless Walls, Lasting Impressions</h1>
-            <p>Professional painting, pressure washing, and epoxy services transforming Tampa Bay homes & businesses. Clean. Reliable. Affordable.</p>
-            <div class="hero-btns">
-                <a href="contact.html" class="btn"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
-                <a href="tel:7273556223" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now: (727) 355-6223</a>
-            </div>
-            <div class="hero-badges">
-                <div class="badge">Residential & Commercial</div>
-                <div class="badge">Interior & Exterior</div>
-                <div class="badge">Pressure & Soft Washing</div>
-                <div class="badge">Garage Epoxy Flooring</div>
+    <!-- Home Hero Section with Enhanced Background -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Flawless Walls, Lasting Impressions</h1>
+                <p>Professional painting, pressure washing, and epoxy services transforming Tampa Bay homes & businesses. Clean. Reliable. Affordable.</p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now: (727) 355-6223</a>
+                </div>
+                <div class="hero-badges">
+                    <div class="badge">Residential & Commercial</div>
+                    <div class="badge">Interior & Exterior</div>
+                    <div class="badge">Pressure & Soft Washing</div>
+                    <div class="badge">Garage Epoxy Flooring</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Preview Section -->
-    <section class="services section-padding" id="services-preview">
+    <!-- Services Section -->
+    <section class="services section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Our Professional Services</h2>
                 <p>Comprehensive solutions for residential and commercial properties across Tampa Bay</p>
             </div>
+            
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-roller"></i>
+                <div class="service-item" data-category="painting">
+                    <div class="service-img">
+                        <img src="assets/tamp.png" alt="Professional Painting Services" loading="lazy">
                     </div>
-                    <div class="service-content">
-                        <h3>🎨 Professional Painting</h3>
-                        <p>Interior & exterior painting for homes and businesses. Flawless finishes that enhance curb appeal and transform living spaces.</p>
-                        <ul class="service-features">
-                            <li>Walls, Ceilings & Trim</li>
-                            <li>Deck & Fence Staining</li>
-                            <li>New Construction & Repaints</li>
-                        </ul>
-                        <a href="services.html" class="btn btn-outline">Explore Painting</a>
+                    <div class="service-overlay">
+                        <h3>Professional Painting</h3>
+                        <p>Interior & Exterior Services</p>
+                        <p>Flawless finishes that enhance curb appeal and transform living spaces</p>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-spray-can"></i>
+                
+                <div class="service-item" data-category="washing">
+                    <div class="service-img">
+                        <img src="assets/home.png" alt="Pressure Washing Services" loading="lazy">
                     </div>
-                    <div class="service-content">
-                        <h3>🚿 Pressure & Soft Washing</h3>
-                        <p>Professional roof, driveway, and exterior cleaning that removes dirt, algae, and stains while restoring your property's natural beauty.</p>
-                        <ul class="service-features">
-                            <li>Sidewalks & Driveways</li>
-                            <li>Patios & Pool Decks</li>
-                            <li>Residential & Commercial</li>
-                        </ul>
-                        <a href="services.html" class="btn btn-outline">Explore Washing</a>
+                    <div class="service-overlay">
+                        <h3>Pressure & Soft Washing</h3>
+                        <p>Roof, Driveway & Exterior Cleaning</p>
+                        <p>Remove dirt, algae, and stains while restoring your property's natural beauty</p>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-layer-group"></i>
+                
+                <div class="service-item" data-category="epoxy">
+                    <div class="service-img">
+                        <img src="assets/call.png" alt="Epoxy Flooring Services" loading="lazy">
                     </div>
-                    <div class="service-content">
-                        <h3>💎 Garage Epoxy Flooring</h3>
-                        <p>Durable, stunning epoxy floors that transform your garage into a showpiece. Sleek surfaces that withstand heavy use while enhancing your space.</p>
-                        <ul class="service-features">
-                            <li>Durable & Long-lasting</li>
-                            <li>Easy to Clean & Maintain</li>
-                            <li>Beautiful Showroom Finish</li>
-                        </ul>
-                        <a href="services.html" class="btn btn-outline">Explore Epoxy</a>
+                    <div class="service-overlay">
+                        <h3>Garage Epoxy Flooring</h3>
+                        <p>Durable & Beautiful Floor Solutions</p>
+                        <p>Transform your garage into a showpiece with sleek, durable surfaces</p>
                     </div>
                 </div>
             </div>
+            
             <div class="services-cta">
                 <a href="services.html" class="btn">View All Services</a>
                 <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
@@ -113,8 +1023,8 @@
         </div>
     </section>
 
-    <!-- About Preview Section -->
-    <section class="about section-padding" id="about-preview">
+    <!-- About Section -->
+    <section class="about section-padding">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -147,7 +1057,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/tamptabay.png" alt="Professional painting services in Tampa Bay">
+                    <img src="assets/tamptabay.png" alt="Professional services in Tampa Bay" loading="lazy">
                 </div>
             </div>
         </div>
@@ -162,7 +1072,6 @@
             </div>
             <div class="areas-content">
                 <div class="areas-map">
-                    <!-- Placeholder for map or area graphic -->
                     <div class="map-placeholder">
                         <i class="fas fa-map-marked-alt"></i>
                         <p>Tampa Bay Service Area</p>
@@ -189,22 +1098,22 @@
         </div>
     </section>
 
-    <!-- CTA Banner -->
+    <!-- CTA Section -->
     <section class="cta-banner">
         <div class="container">
-            <div class="banner-content">
+            <div class="cta-content">
                 <h2>Ready to Transform Your Property?</h2>
-                <p>Get your free estimate today and experience the Premier difference</p>
-                <div class="banner-btns">
-                    <a href="contact.html" class="btn btn-large"><i class="fas fa-estate"></i> Get Free Estimate</a>
-                    <a href="tel:7273556223" class="btn btn-outline btn-large"><i class="fas fa-phone"></i> Call: (727) 355-6223</a>
+                <p>Get your free, no-obligation estimate today and experience the Premier Contractors FL difference</p>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn btn-large">Get Free Estimate</a>
+                    <a href="tel:7273556223" class="btn btn-outline btn-large">Call: (727) 355-6223</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Preview Section -->
-    <section class="contact section-padding" id="contact-preview">
+    <section class="contact-preview section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>Get Your Free Estimate</h2>
@@ -292,7 +1201,7 @@
                     <div class="social-links">
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:support@premiercontractorsfl.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -302,6 +1211,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="testimonials.html">Testimonials</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -314,7 +1224,7 @@
                         <li><a href="services.html">Pressure Washing</a></li>
                         <li><a href="services.html">Soft Washing</a></li>
                         <li><a href="services.html">Garage Epoxy</a></li>
-                        <li><a href="services.html">Deck & Fence Staining</a></li>
+                        <li><a href="services.html">Deck Staining</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -330,16 +1240,152 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-     <!-- Theme Toggle -->
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
         <i class="fas fa-moon"></i>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll animation for service items
+            function checkServiceItems() {
+                const serviceItems = document.querySelectorAll('.service-item');
+                
+                serviceItems.forEach(item => {
+                    if (isElementInViewport(item) && item.style.display !== 'none') {
+                        item.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Check if element is in viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Initial check on page load
+            checkServiceItems();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkServiceItems);
+            
+            // Check on resize (in case layout changes)
+            window.addEventListener('resize', checkServiceItems);
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+            
+            // Add dark mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.dark-mode {
+                    --primary-black: #f5f5f5;
+                    --secondary-black: #e8e8e8;
+                    --white: #1a1a1a;
+                    --stone-gray: #2d2d2d;
+                    --light-gray: #2d2d2d;
+                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                }
+                
+                body.dark-mode .services {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .areas {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .contact-preview {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .service-item {
+                    background-color: #2d2d2d;
+                }
+                
+                body.dark-mode .city {
+                    background-color: #1a1a1a;
+                    color: #f5f5f5;
+                }
+                
+                body.dark-mode .contact-item {
+                    background-color: #1a1a1a;
+                }
+                
+                body.dark-mode .contact-form {
+                    background-color: #1a1a1a;
+                }
+                
+                body.dark-mode .footer-contact a,
+                body.dark-mode .footer-links a {
+                    color: #b0b0b0;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your inquiry! We will contact you within 24 hours with your free estimate.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
