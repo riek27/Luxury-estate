@@ -313,7 +313,7 @@ header.scrolled {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/hand.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/flori.jpg') no-repeat center center/cover;
     color: var(--white);
     text-align: center;
 }
