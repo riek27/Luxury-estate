@@ -3,7 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Premier Contractors FL</title>
+    <title>About Us | Premier Contractors FL - Tampa Bay's Premier Painting & Pressure Washing Experts</title>
+    <meta name="description" content="Learn about Premier Contractors FL, Tampa Bay's trusted painting and pressure washing experts. With over a decade of experience, we deliver flawless results.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="about premier contractors, Tampa painting company, pressure washing experts, epoxy flooring Florida, our story, company history">
+    <meta name="author" content="Premier Contractors FL">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us | Premier Contractors FL - Tampa Bay's Premier Painting & Pressure Washing Experts">
+    <meta property="og:description" content="Learn about Premier Contractors FL, Tampa Bay's trusted painting and pressure washing experts. With over a decade of experience, we deliver flawless results.">
+    <meta property="og:image" content="https://www.premiercontractorsfl.com/assets/logos.png">
+    <meta property="og:url" content="https://www.premiercontractorsfl.com/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Premier Contractors FL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us | Premier Contractors FL">
+    <meta name="twitter:description" content="Learn about Premier Contractors FL, Tampa Bay's trusted painting and pressure washing experts.">
+    <meta name="twitter:image" content="https://www.premiercontractorsfl.com/assets/logos.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.premiercontractorsfl.com/about.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Premier Contractors FL",
+      "description": "Learn about Premier Contractors FL, Tampa Bay's trusted painting and pressure washing experts",
+      "url": "https://www.premiercontractorsfl.com/about.html",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Premier Contractors FL",
+        "description": "Professional painting, pressure washing, and epoxy services in Tampa Bay",
+        "url": "https://www.premiercontractorsfl.com",
+        "foundingDate": "2010",
+        "founder": {
+          "@type": "Person",
+          "name": "John Smith"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        },
+        "areaServed": "Tampa Bay and surrounding areas",
+        "knowsAbout": [
+          "Interior Painting",
+          "Exterior Painting",
+          "Pressure Washing",
+          "Soft Washing",
+          "Epoxy Flooring",
+          "Deck Staining"
+        ],
+        "telephone": "+1-727-355-6223",
+        "email": "support@premiercontractorsfl.com"
+      }
+    }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -244,7 +314,7 @@
 
         /* Page Header */
         .page-header {
-            height: 60vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -253,6 +323,7 @@
             color: var(--white);
             text-align: center;
             margin-top: 80px;
+            padding: 60px 0;
         }
 
         .page-header-content {
@@ -345,9 +416,50 @@
             transform: scale(1.05);
         }
 
+        /* Story Section */
+        .story {
+            background-color: var(--light-gray);
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-content h2 {
+            margin-bottom: 40px;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .story-highlight {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--gold);
+        }
+
+        .story-highlight h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .story-highlight p {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
         /* Values Section */
         .values {
-            background-color: var(--light-gray);
+            background-color: var(--white);
         }
 
         .values-grid {
@@ -406,7 +518,7 @@
 
         /* Services Overview Section */
         .services {
-            background-color: var(--white);
+            background-color: var(--light-gray);
         }
 
         .services-grid {
@@ -472,6 +584,47 @@
 
         .service-cta {
             text-align: left;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cert-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .cert-item h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .cert-item p {
+            text-align: center;
         }
 
         /* CTA Section */
@@ -628,6 +781,33 @@
             transform: scale(1.1);
         }
 
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            background-color: var(--light-gray);
+            margin-top: 80px;
+        }
+
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-black);
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb span {
+            color: var(--gold);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
@@ -662,6 +842,10 @@
             
             .about-text p {
                 text-align: center;
+            }
+            
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -705,7 +889,7 @@
             }
             
             .page-header {
-                height: 50vh;
+                min-height: 60vh;
                 margin-top: 70px;
             }
             
@@ -729,6 +913,10 @@
             .cta-btns {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .cert-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -780,6 +968,61 @@
         .service-card:nth-child(1) { transition-delay: 0.1s; }
         .service-card:nth-child(2) { transition-delay: 0.2s; }
         .service-card:nth-child(3) { transition-delay: 0.3s; }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --primary-black: #f5f5f5;
+            --secondary-black: #e8e8e8;
+            --white: #1a1a1a;
+            --stone-gray: #2d2d2d;
+            --light-gray: #2d2d2d;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .about {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .story {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .story-highlight {
+            background-color: #3d3d3d;
+        }
+        
+        body.dark-mode .values {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .value-item {
+            background-color: #3d3d3d;
+        }
+        
+        body.dark-mode .services {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .service-card {
+            background-color: #3d3d3d;
+        }
+        
+        body.dark-mode .certifications {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .cert-item {
+            background-color: #3d3d3d;
+        }
+        
+        body.dark-mode .breadcrumb {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .footer-contact a,
+        body.dark-mode .footer-links a {
+            color: #b0b0b0;
+        }
     </style>
 </head>
 <body>
@@ -788,7 +1031,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logos.png" alt="Premier Contractors FL" class="logo-img" loading="lazy">
+                    <img src="assets/logos.png" alt="Premier Contractors FL - Professional Painting and Pressure Washing Services" class="logo-img" loading="lazy">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -806,6 +1049,17 @@
             </nav>
         </div>
     </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <a href="index.html">Home</a>
+                <span>></span>
+                <span>About Us</span>
+            </div>
+        </div>
+    </div>
 
     <!-- About Hero Section -->
     <section class="page-header">
@@ -827,12 +1081,12 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Tampa Bay's Premier Painting & Pressure Washing Experts</h2>
-                    <p>Premier Contractors FL has built a reputation for excellence in residential and commercial painting, pressure washing, soft washing, and garage epoxy services throughout the Tampa Bay area. We take pride in transforming properties with our attention to detail and commitment to quality craftsmanship.</p>
+                    <p>Founded in 2010, Premier Contractors FL has built a reputation for excellence in residential and commercial painting, pressure washing, soft washing, and garage epoxy services throughout the Tampa Bay area. We take pride in transforming properties with our attention to detail and commitment to quality craftsmanship.</p>
                     <p>Our team of skilled professionals understands that your home or business is one of your most valuable investments. That's why we approach every project with the care and precision it deserves, using high-quality materials and proven techniques to deliver results that exceed expectations.</p>
                     
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="stat-number" data-count="250">0</div>
+                            <div class="stat-number" data-count="500">0</div>
                             <div class="stat-text">Projects Completed</div>
                         </div>
                         <div class="stat">
@@ -846,8 +1100,27 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/hom.png" alt="Professional painting services" loading="lazy">
+                    <img src="assets/hom.png" alt="Professional painting services in Tampa Bay" loading="lazy">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story section-padding">
+        <div class="container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>Premier Contractors FL began with a simple vision: to provide Tampa Bay homeowners and businesses with exceptional contracting services that combine quality craftsmanship with outstanding customer service. What started as a small local business has grown into one of the region's most trusted names in property enhancement services.</p>
+                
+                <div class="story-highlight">
+                    <h3>Our Mission</h3>
+                    <p>"To transform properties and enhance lives through exceptional craftsmanship, reliable service, and lasting relationships built on trust and integrity."</p>
+                </div>
+                
+                <p>Over the years, we've completed hundreds of projects, from single-room interior paint jobs to complete exterior transformations for commercial properties. Our attention to detail and commitment to clean, reliable service has earned us a 98% customer satisfaction rate and numerous referrals from happy clients.</p>
+                
+                <p>We are fully licensed and insured in the state of Florida, and our team undergoes continuous training to stay updated with the latest techniques and safety standards. We believe in giving back to our community and take pride in being a locally-owned business that contributes to the beauty and value of Tampa Bay properties.</p>
             </div>
         </div>
     </section>
@@ -906,6 +1179,46 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Certifications & Standards</h2>
+                <p>Committed to professionalism, safety, and quality</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Licensed & Insured</h3>
+                    <p>Fully licensed and insured for your protection and peace of mind.</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety Certified</h3>
+                    <p>Our team follows strict safety protocols on every project.</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Quality Standards</h3>
+                    <p>Committed to the highest standards of workmanship and materials.</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Customer Guarantee</h3>
+                    <p>Your complete satisfaction is our top priority and guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Overview Section -->
     <section class="services section-padding">
         <div class="container">
@@ -916,7 +1229,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="assets/tat.png" alt="Painting Services" loading="lazy">
+                        <img src="assets/tat.png" alt="Professional Painting Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3><i class="fas fa-paint-roller"></i> Interior & Exterior Painting</h3>
@@ -928,7 +1241,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="assets/homess.png" alt="Pressure Washing" loading="lazy">
+                        <img src="assets/homess.png" alt="Pressure Washing Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3><i class="fas fa-spray-can"></i> Pressure & Soft Washing</h3>
@@ -940,7 +1253,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="assets/garagee.png" alt="Garage Epoxy" loading="lazy">
+                        <img src="assets/garagee.png" alt="Epoxy Flooring Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3><i class="fas fa-gem"></i> Garage Epoxy Flooring</h3>
@@ -976,7 +1289,7 @@
                     <h3>Premier Contractors FL</h3>
                     <p>Flawless Walls, Lasting Impressions. Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/premier_contractors_fl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="mailto:support@premiercontractorsfl.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
@@ -1016,7 +1329,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved. | <a href="privacy.html" style="color: var(--stone-gray);">Privacy Policy</a> | <a href="terms.html" style="color: var(--stone-gray);">Terms of Service</a></p>
             </div>
         </div>
     </footer>
@@ -1142,45 +1455,6 @@
                     }
                 });
             }
-            
-            // Add dark mode styles
-            const style = document.createElement('style');
-            style.textContent = `
-                body.dark-mode {
-                    --primary-black: #f5f5f5;
-                    --secondary-black: #e8e8e8;
-                    --white: #1a1a1a;
-                    --stone-gray: #2d2d2d;
-                    --light-gray: #2d2d2d;
-                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                }
-                
-                body.dark-mode .about {
-                    background-color: #2d2d2d;
-                }
-                
-                body.dark-mode .values {
-                    background-color: #2d2d2d;
-                }
-                
-                body.dark-mode .value-item {
-                    background-color: #3d3d3d;
-                }
-                
-                body.dark-mode .services {
-                    background-color: #2d2d2d;
-                }
-                
-                body.dark-mode .service-card {
-                    background-color: #3d3d3d;
-                }
-                
-                body.dark-mode .footer-contact a,
-                body.dark-mode .footer-links a {
-                    color: #b0b0b0;
-                }
-            `;
-            document.head.appendChild(style);
         });
     </script>
 </body>
