@@ -6,7 +6,861 @@
     <title>Contact Us | Premier Contractors FL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --white: #ffffff;
+            --stone-gray: #e8e8e8;
+            --light-gray: #f5f5f5;
+            --gold: #d4af37;
+            --light-gold: #f4e4a6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Page Header - Enhanced with Larger Background and Centered Text */
+        .page-header {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header-content {
+            max-width: 900px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-align: center;
+            width: 100%;
+        }
+
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.2rem;
+            color: var(--primary-black);
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: var(--secondary-black);
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--gold);
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--stone-gray);
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Service Area Section */
+        .service-area {
+            background-color: var(--light-gray);
+        }
+
+        .area-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .area-map {
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .area-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .area-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .area-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .area-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .area-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .area-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-black);
+        }
+
+        .area-item h3 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .area-item p {
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .area-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .area-cta p {
+            text-align: center;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--white);
+        }
+
+        .faq-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .faq-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-item h3 {
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-banner {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2:after {
+            background-color: var(--gold);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .footer-contact a {
+            color: var(--stone-gray);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-cta {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--stone-gray);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-header h1 {
+                font-size: 3.2rem;
+            }
+            
+            .contact-content, .area-content, .faq-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .area-map {
+                height: 400px;
+            }
+            
+            .area-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-header {
+                min-height: 60vh;
+                margin-top: 70px;
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1.3rem;
+            }
+            
+            .area-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            .page-header {
+                min-height: 50vh;
+                padding: 30px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns, .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .area-map {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+                margin-right: 5px;
+            }
+            
+            .page-header {
+                min-height: 45vh;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --primary-black: #f5f5f5;
+            --secondary-black: #e8e8e8;
+            --white: #1a1a1a;
+            --stone-gray: #2d2d2d;
+            --light-gray: #2d2d2d;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .service-area {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .contact {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .faq {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .area-item {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .contact-item {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .contact-form {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .faq-item {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .footer-contact a,
+        body.dark-mode .footer-links a {
+            color: #b0b0b0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -14,7 +868,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.png" alt="Premier Contractors FL" class="logo-img">
+                    <img src="assets/logos.png" alt="Premier Contractors FL" class="logo-img">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -23,7 +877,7 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html" class="btn btn-small">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-small active">Contact</a></li>
                 </ul>
                 <button class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -171,48 +1025,54 @@
                 <h2>Our Service Area</h2>
                 <p>Proudly serving the entire Tampa Bay region and surrounding communities</p>
             </div>
-            <div class="area-grid">
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-city"></i>
-                    </div>
-                    <h3>Tampa</h3>
-                    <p>Downtown, South Tampa, North Tampa, Westchase</p>
+            <div class="area-content">
+                <div class="area-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d-82.76358208236825!3d27.994402411308556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2b782b3b9d1e1%3A0xa75f1389af96b463!2sTampa%20Bay%2C%20FL!5e0!3m2!1sen!2sus!4v1712345678901!5m2!1sen!2sus" 
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-umbrella-beach"></i>
+                <div class="area-grid">
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3>Tampa</h3>
+                        <p>Downtown, South Tampa, North Tampa, Westchase</p>
                     </div>
-                    <h3>St. Petersburg</h3>
-                    <p>Downtown, Beach Drive, Snell Isle, Old Northeast</p>
-                </div>
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-water"></i>
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h3>St. Petersburg</h3>
+                        <p>Downtown, Beach Drive, Snell Isle, Old Northeast</p>
                     </div>
-                    <h3>Clearwater</h3>
-                    <p>Island Estates, Sand Key, Belleair, Safety Harbor</p>
-                </div>
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-home"></i>
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Clearwater</h3>
+                        <p>Island Estates, Sand Key, Belleair, Safety Harbor</p>
                     </div>
-                    <h3>Brandon & Riverview</h3>
-                    <p>FishHawk, Lithia, Valrico, Bloomingdale</p>
-                </div>
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-tree"></i>
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Brandon & Riverview</h3>
+                        <p>FishHawk, Lithia, Valrico, Bloomingdale</p>
                     </div>
-                    <h3>Wesley Chapel</h3>
-                    <p>Wiregrass, Seven Oaks, Epperson, Connerton</p>
-                </div>
-                <div class="area-item">
-                    <div class="area-icon">
-                        <i class="fas fa-ship"></i>
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Wesley Chapel</h3>
+                        <p>Wiregrass, Seven Oaks, Epperson, Connerton</p>
                     </div>
-                    <h3>Lakeland</h3>
-                    <p>Lakeside Village, South Lakeland, North Lakeland</p>
+                    <div class="area-item">
+                        <div class="area-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3>Lakeland</h3>
+                        <p>Lakeside Village, South Lakeland, North Lakeland</p>
+                    </div>
                 </div>
             </div>
             <div class="area-cta">
@@ -333,6 +1193,84 @@
         <i class="fas fa-moon"></i>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Toggle icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+            
+            // Form submission
+            const estimateForm = document.getElementById('estimateForm');
+            if (estimateForm) {
+                estimateForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your inquiry! We will contact you within 24 hours with your free estimate.');
+                    estimateForm.reset();
+                });
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
