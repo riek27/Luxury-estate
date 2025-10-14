@@ -5,6 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier Contractors FL | Premium Painting & Pressure Washing Services</title>
     <meta name="description" content="Professional painting, pressure washing, and epoxy services in Tampa Bay. Flawless walls, lasting impressions with clean, reliable, and affordable solutions.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="painting contractors Tampa, pressure washing Tampa, epoxy flooring Florida, home improvement Tampa, exterior painting, interior painting, soft washing, garage flooring">
+    <meta name="author" content="Premier Contractors FL">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Premier Contractors FL | Premium Painting & Pressure Washing Services">
+    <meta property="og:description" content="Professional painting, pressure washing, and epoxy services in Tampa Bay. Flawless walls, lasting impressions with clean, reliable, and affordable solutions.">
+    <meta property="og:image" content="https://www.premiercontractorsfl.com/assets/logos.png">
+    <meta property="og:url" content="https://www.premiercontractorsfl.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Premier Contractors FL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Premier Contractors FL | Premium Painting & Pressure Washing Services">
+    <meta name="twitter:description" content="Professional painting, pressure washing, and epoxy services in Tampa Bay.">
+    <meta name="twitter:image" content="https://www.premiercontractorsfl.com/assets/logos.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.premiercontractorsfl.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Premier Contractors FL",
+      "description": "Professional painting, pressure washing, and epoxy services in Tampa Bay",
+      "url": "https://www.premiercontractorsfl.com",
+      "telephone": "+1-727-355-6223",
+      "email": "support@premiercontractorsfl.com",
+      "areaServed": "Tampa Bay, Florida",
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 27.9506,
+          "longitude": -82.4572
+        },
+        "geoRadius": "50000"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Contracting Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Professional Painting",
+              "description": "Interior and exterior painting services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pressure Washing",
+              "description": "Roof, driveway and exterior cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Epoxy Flooring",
+              "description": "Garage epoxy flooring installation"
+            }
+          }
+        ]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "openingHours": "Mo-Sa 08:00-18:00",
+      "priceRange": "$$"
+    }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -622,7 +713,7 @@
 
         /* CTA Section */
         .cta-banner {
-            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.coto-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1581094794329-cdc2d8f99e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
             padding: 100px 0;
@@ -774,6 +865,44 @@
             transform: scale(1.1);
         }
 
+        /* Trust Indicators Section */
+        .trust-indicators {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .indicator-item {
+            padding: 30px 20px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .indicator-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .indicator-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .indicator-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
@@ -825,6 +954,10 @@
             
             .areas-cta p {
                 text-align: center;
+            }
+            
+            .indicators-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -910,6 +1043,10 @@
             .badge {
                 padding: 8px 16px;
                 font-size: 0.85rem;
+            }
+            
+            .indicators-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1034,6 +1171,14 @@
         body.dark-mode .footer-links a {
             color: #b0b0b0;
         }
+        
+        body.dark-mode .trust-indicators {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .indicator-item {
+            background-color: #1a1a1a;
+        }
     </style>
 </head>
 <body>
@@ -1042,7 +1187,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logos.png" alt="Premier Contractors FL" class="logo-img" loading="lazy">
+                    <img src="assets/logos.png" alt="Premier Contractors FL - Professional Painting and Pressure Washing Services" class="logo-img" loading="lazy">
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -1081,6 +1226,30 @@
         </div>
     </section>
 
+    <!-- Trust Indicators Section -->
+    <section class="trust-indicators section-padding">
+        <div class="container">
+            <div class="indicators-grid">
+                <div class="indicator-item">
+                    <div class="indicator-number">500+</div>
+                    <div class="indicator-text">Projects Completed</div>
+                </div>
+                <div class="indicator-item">
+                    <div class="indicator-number">98%</div>
+                    <div class="indicator-text">Satisfaction Rate</div>
+                </div>
+                <div class="indicator-item">
+                    <div class="indicator-number">15+</div>
+                    <div class="indicator-text">Years Experience</div>
+                </div>
+                <div class="indicator-item">
+                    <div class="indicator-number">24/7</div>
+                    <div class="indicator-text">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services section-padding">
         <div class="container">
@@ -1092,7 +1261,7 @@
             <div class="services-grid">
                 <div class="service-item" data-category="painting">
                     <div class="service-img">
-                        <img src="assets/tamptaa.png" alt="Professional Painting Services" loading="lazy">
+                        <img src="assets/tamptaa.png" alt="Professional Painting Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-overlay">
                         <h3>Professional Painting</h3>
@@ -1103,7 +1272,7 @@
                 
                 <div class="service-item" data-category="washing">
                     <div class="service-img">
-                        <img src="assets/hom.png" alt="Pressure Washing Services" loading="lazy">
+                        <img src="assets/hom.png" alt="Pressure Washing Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-overlay">
                         <h3>Pressure & Soft Washing</h3>
@@ -1114,7 +1283,7 @@
                 
                 <div class="service-item" data-category="epoxy">
                     <div class="service-img">
-                        <img src="assets/homess.png" alt="Epoxy Flooring Services" loading="lazy">
+                        <img src="assets/homess.png" alt="Epoxy Flooring Services in Tampa Bay" loading="lazy">
                     </div>
                     <div class="service-overlay">
                         <h3>Garage Epoxy Flooring</h3>
@@ -1348,7 +1517,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved.</p>
+                <p>&copy; 2025 Premier Contractors FL. All Rights Reserved. | <a href="privacy.html" style="color: var(--stone-gray);">Privacy Policy</a> | <a href="terms.html" style="color: var(--stone-gray);">Terms of Service</a></p>
             </div>
         </div>
     </footer>
