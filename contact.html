@@ -660,6 +660,29 @@
             transform: scale(1.1);
         }
 
+        /* Form Status Messages */
+        .form-status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .form-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
@@ -868,7 +891,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/logos.png" alt="Premier Contractors FL" class="logo-img">
+                    <div class="logo-img" style="background-color: var(--gold); width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--primary-black); font-weight: bold;">PC</div>
                     Premier<span>Contractors</span>
                 </a>
                 <ul class="nav-links">
@@ -973,21 +996,22 @@
                 </div>
                 <div class="contact-form" id="contact-form">
                     <h3>Request Your Free Estimate</h3>
+                    <div id="formStatus" class="form-status"></div>
                     <form id="estimateForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Your Phone" required>
+                            <input type="tel" class="form-control" id="phone" placeholder="Your Phone" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Property Address">
+                            <input type="text" class="form-control" id="address" placeholder="Property Address">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select class="form-control" id="service" required>
                                 <option value="" disabled selected>Service Needed</option>
                                 <option value="interior-painting">Interior Painting</option>
                                 <option value="exterior-painting">Exterior Painting</option>
@@ -1000,7 +1024,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" id="timeline">
                                 <option value="" disabled selected>Project Timeline</option>
                                 <option value="immediate">Immediate (0-2 weeks)</option>
                                 <option value="short">Short Term (2-4 weeks)</option>
@@ -1009,7 +1033,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Project Details & Questions" rows="5" required></textarea>
+                            <textarea class="form-control" id="message" placeholder="Project Details & Questions" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-large">Get Free Estimate</button>
                     </form>
@@ -1143,7 +1167,7 @@
                     <h3>Premier Contractors FL</h3>
                     <p>Flawless Walls, Lasting Impressions. Clean, reliable, and affordable painting, pressure washing, and epoxy services for Tampa Bay area homes and businesses.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/premier_contractors_fl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="mailto:support@premiercontractorsfl.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
@@ -1247,9 +1271,52 @@
             if (estimateForm) {
                 estimateForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Thank you for your inquiry! We will contact you within 24 hours with your free estimate.');
+                    
+                    // Get form data
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const address = document.getElementById('address').value;
+                    const service = document.getElementById('service').value;
+                    const timeline = document.getElementById('timeline').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Basic validation
+                    if (!name || !email || !phone || !service || !message) {
+                        showFormStatus('Please fill in all required fields.', 'error');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showFormStatus('Please enter a valid email address.', 'error');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    showFormStatus('Thank you for your inquiry! We will contact you within 24 hours with your free estimate.', 'success');
+                    
+                    // Reset form
                     estimateForm.reset();
+                    
+                    // Scroll to form status message
+                    document.getElementById('formStatus').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
+            }
+            
+            // Function to show form status messages
+            function showFormStatus(message, type) {
+                const statusElement = document.getElementById('formStatus');
+                statusElement.textContent = message;
+                statusElement.className = 'form-status ' + type;
+                
+                // Auto-hide success messages after 8 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        statusElement.style.display = 'none';
+                    }, 8000);
+                }
             }
             
             // Smooth scroll for anchor links
